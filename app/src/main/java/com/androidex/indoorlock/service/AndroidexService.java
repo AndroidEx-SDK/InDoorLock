@@ -12,6 +12,8 @@ import android.util.Log;
 import com.androidex.indoorlock.bean.AccessModel;
 import com.androidex.indoorlock.bean.ApplyHouseModel;
 import com.androidex.indoorlock.bean.BlockListModel;
+import com.androidex.indoorlock.bean.CarApplyModel;
+import com.androidex.indoorlock.bean.CarListModel;
 import com.androidex.indoorlock.bean.CityListModel;
 import com.androidex.indoorlock.bean.CommuntityListModel;
 import com.androidex.indoorlock.bean.CreateTempKeyModel;
@@ -142,6 +144,12 @@ public class AndroidexService extends Service implements Constants{
             case EVENT_WHAT_APPLY_HOUSE:{
                 applyHouse((Map<String, String>) event.msg);
             }break;
+            case EVENT_WHAT_CAR:{
+                getCarList((Map<String, String>) event.msg);
+            }break;
+            case EVENT_WHAT_APPLYCAT:{
+                applyCar((Map<String, String>) event.msg);
+            }break;
         }
     }
 
@@ -153,6 +161,50 @@ public class AndroidexService extends Service implements Constants{
         showL("service 注销完成");
         postEvent(EVENT_WHAT_SIGN_OUT_CALLBACK);
         super.onDestroy();
+    }
+
+    private void applyCar(Map<String,String> data){
+        NetApi.applyCar(data,new ResultCallBack<CarApplyModel>(){
+            @Override
+            public void onSuccess(int statusCode, Headers headers, CarApplyModel model) {
+                super.onSuccess(statusCode, headers, model);
+                postEvent(EVENT_WHAT_APPLYCAT,model);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Request request, Exception e) {
+                super.onFailure(statusCode, request, e);
+                CarApplyModel model = new CarApplyModel();
+                if(Utils.isNetworkAvailable()){
+                    model.code = SERVER_ERROR;
+                }else{
+                    model.code = NETWORK_ERROR;
+                }
+                postEvent(EVENT_WHAT_APPLYCAT,model);
+            }
+        });
+    }
+
+    private void getCarList(Map<String,String> data){
+        NetApi.getCarList(data,new ResultCallBack<CarListModel>(){
+            @Override
+            public void onSuccess(int statusCode, Headers headers, CarListModel model) {
+                super.onSuccess(statusCode, headers, model);
+                postEvent(EVENT_WHAT_CAR_RESULT,model);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Request request, Exception e) {
+                super.onFailure(statusCode, request, e);
+                CarListModel model = new CarListModel();
+                if(Utils.isNetworkAvailable()){
+                    model.code = SERVER_ERROR;
+                }else{
+                    model.code = NETWORK_ERROR;
+                }
+                postEvent(EVENT_WHAT_CAR_RESULT,model);
+            }
+        });
     }
 
     private void applyHouse(Map<String,String> data){
@@ -437,12 +489,18 @@ public class AndroidexService extends Service implements Constants{
             @Override
             public void onSuccess(int statusCode, Headers headers, UpdateModel model) {
                 super.onSuccess(statusCode, headers, model);
-                postEvent(EVENT_WHAT_UPDATE_PASSWORD_CALLBACK); //发布修改结果
+                postEvent(EVENT_WHAT_UPDATE_PASSWORD_CALLBACK,model); //发布修改结果
             }
 
             @Override
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
+                UpdateModel model = new UpdateModel();
+                if(Utils.isNetworkAvailable()){
+                    model.code = SERVER_ERROR;
+                }else{
+                    model.code = NETWORK_ERROR;
+                }
                 postEvent(EVENT_WHAT_UPDATE_PASSWORD_CALLBACK); //发布修改结果
             }
         });

@@ -95,6 +95,7 @@ public class ApplyHouseActivity extends BaseActivity {
                         break;
                     case SMSSDKTools.OnSMSEvent.SMS_EVENT_GET_COMPLETE:
                         showToast(true,"验证码获取成功");
+                        mHandler.sendEmptyMessage(0x01);
                         break;
                     case SMSSDKTools.OnSMSEvent.SMS_EVENT_GET_ERROR:
                         showToast(false,"验证码获取失败");
@@ -203,9 +204,24 @@ public class ApplyHouseActivity extends BaseActivity {
         }
     }
 
+    private  int second = 60;
     @Override
     public void onMessage(Message msg) {
-
+        if(msg.what == 0x01){
+            second = 60;
+            getCode.setEnabled(false);
+            getCode.setText("等待"+second+"秒");
+            mHandler.sendEmptyMessageDelayed(0x02,1000);
+        }else if(msg.what == 0x02){
+            second--;
+            if(second >=0){
+                getCode.setText("等待"+second+"秒");
+                mHandler.sendEmptyMessageDelayed(0x02,1000);
+            }else{
+                getCode.setText("获取验证码");
+                getCode.setEnabled(true);
+            }
+        }
     }
 
     @Override

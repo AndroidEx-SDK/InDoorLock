@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -26,6 +28,12 @@ public abstract class BaseFragment extends Fragment implements Constants,View.On
     protected Context mContext;
     protected  View view;
     private Dialog dialog;
+    protected Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            onMessage(msg);
+        }
+    };
 
     @Override
     public void onAttach(Context context) {
@@ -70,6 +78,10 @@ public abstract class BaseFragment extends Fragment implements Constants,View.On
 
     }
 
+    protected void onMessage(Message msg){
+
+    }
+
     public void startActivity(Class<?> clz,Bundle bundle){
         Intent intent = new Intent();
         intent.setClass(mContext, clz);
@@ -92,6 +104,15 @@ public abstract class BaseFragment extends Fragment implements Constants,View.On
         if(dialog!=null && dialog.isShowing()){
             dialog.dismiss();
         }
+    }
+
+    public void showToast(final boolean type,final String msg){
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                Utils.showCustomToast(mContext,type,msg);
+            }
+        });
     }
 
 

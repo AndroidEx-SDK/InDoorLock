@@ -6,6 +6,8 @@ import com.alibaba.fastjson.JSON;
 import com.androidex.indoorlock.bean.AccessModel;
 import com.androidex.indoorlock.bean.ApplyHouseModel;
 import com.androidex.indoorlock.bean.BlockListModel;
+import com.androidex.indoorlock.bean.CarApplyModel;
+import com.androidex.indoorlock.bean.CarListModel;
 import com.androidex.indoorlock.bean.CityListModel;
 import com.androidex.indoorlock.bean.CommuntityListModel;
 import com.androidex.indoorlock.bean.CreateTempKeyModel;
@@ -158,7 +160,6 @@ public class NetApi extends UrlTool{
     }
 
     public static void getOwnerList(Map<String,String> data, ResultCallBack<OwnerListModel> callBack){
-        //http://www.lockaxial.com/app/user/retrieveUnitOwnerList?blockUnitId=285&appKey=eyJyaWQiOjk3MiwidW5pdElkIjoyODUsImNvbW11bml0eUlkIjozOH0=
         RequestParams params = RequestParams.newInstance();
         params.put("blockUnitId",Integer.valueOf(data.get("blockUnitId")));
         params.put("appKey", data.get("appKey"));
@@ -187,8 +188,32 @@ public class NetApi extends UrlTool{
         new OkRequest.Builder().url(url).headers(getHeaders(getToken(data))).params(params).post(callBack);
     }
 
+    public static void getCarList(Map<String,String> data, ResultCallBack<CarListModel> callBack){
+        RequestParams params = RequestParams.newInstance();
+        params.put("unitId",Integer.valueOf(data.get("unitId")));
+        params.put("appKey", data.get("appKey"));
+        String url = BASE_HEAD+CAR_LIST;
+        new OkRequest.Builder().url(url).headers(getHeaders(getToken(data))).params(params).get(callBack);
+    }
 
-    //http://www.lockaxial.com/app/unit/retrieveAccessList?arrayLength=0&appKey=eyJyaWQiOjk3MiwidW5pdElkIjoyNzYsImNvbW11bml0eUlkIjozOH0=
+    public static void applyCar(Map<String,String> data,ResultCallBack<CarApplyModel> callBack){
+        RequestParams params = RequestParams.newInstance();
+        params.put("appKey", data.get("appKey"));
+        try{
+            JSONObject j = new JSONObject();
+            j.put("carNo",data.get("carNo"));
+            j.put("unitId",Integer.valueOf(data.get("unitId")));
+            j.put("communityId",Integer.valueOf(data.get("communityId")));
+            j.put("state",data.get("state"));
+            params.put("car",j);
+        }catch (Exception e){
+
+        }
+        String url = BASE_HEAD+APPLY_CAR;
+        new OkRequest.Builder().url(url).headers(getHeaders(getToken(data))).params(params).get(callBack);
+    }
+
+
 
     private static Headers getHeaders(String token){
         Headers headers = new Headers.Builder()

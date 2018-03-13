@@ -49,7 +49,9 @@
         <activity android:name=".ui.activity.AccessActivity"></activity>
         <activity android:name=".ui.activity.RegisterActivity"></activity>
         <activity android:name=".ui.activity.HouseDetailsActivity"></activity>
-        <activity android:name=".ui.activity.ApplyHouseActivity" />
+        <activity android:name=".ui.activity.ApplyHouseActivity"></activity>
+        <activity android:name=".ui.activity.CarDetailsActivity"></activity>
+        <activity android:name=".ui.activity.CarApplyActivity"></activity>
     </application>
 
 </manifest>

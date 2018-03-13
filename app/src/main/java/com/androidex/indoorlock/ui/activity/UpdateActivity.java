@@ -14,6 +14,7 @@ import com.androidex.indoorlock.R;
 import com.androidex.indoorlock.base.BaseActivity;
 import com.androidex.indoorlock.bean.Event;
 import com.androidex.indoorlock.bean.SignModel;
+import com.androidex.indoorlock.bean.UpdateModel;
 import com.androidex.indoorlock.utils.SharedPreTool;
 import com.androidex.indoorlock.utils.Utils;
 
@@ -114,6 +115,13 @@ public class UpdateActivity extends BaseActivity {
         switch (event.what){
             case EVENT_WHAT_UPDATE_PASSWORD_CALLBACK:
                 hideLoadingDialog();
+                UpdateModel model = (UpdateModel) event.msg;
+                if(model.code == 0){
+                    showToast(true,"密码修改成功");
+                    this.finish();
+                }else if(model.code == 1){
+                    showToast(false,"原密码错误");
+                }
                 break;
         }
     }
@@ -132,10 +140,6 @@ public class UpdateActivity extends BaseActivity {
             showToast(false,"请输入6至12位有效密码");
             return;
         }
-        if(renewText == null || renewText.length()<6 || renewText.length()>12){
-            showToast(false,"请输入6至12位有效密码");
-            return;
-        }
         if(!newText.equals(renewText)){
             showToast(false,"新密码两次输入不一致，请重新确认");
            return;
@@ -144,8 +148,8 @@ public class UpdateActivity extends BaseActivity {
         if(model != null){
             Map<String,String> data = new HashMap<String,String>();
             data.put("rid",model.user.rid+"");
-            data.put("password",oldText);
-            data.put("password1",newText);
+            data.put("password",newText);
+            data.put("password1",oldText);
             data.put("appKey", Utils.getKey());
             data.put("token",model.token);
             postEvent(EVENT_WHAT_UPDATE_PASSWORD,data);

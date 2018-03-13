@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/activity_titlebar"></include>
+
+    <LinearLayout
+        android:background="#ffffff"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+        <TextView
+            android:text="车牌号"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:layout_marginLeft="20dp"
+            />
+        <EditText
+            android:id="@+id/carNumber"
+            android:textColor="#999999"
+            android:background="#ffffffff"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/add"
+        android:text="提交"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginRight="200dp"
+        android:background="@drawable/confirm_background"
+        android:layout_width="match_parent"
+        android:layout_height="70dp" />
+</LinearLayout>

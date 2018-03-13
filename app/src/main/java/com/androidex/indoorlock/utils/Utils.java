@@ -170,4 +170,23 @@ public class Utils {
         }
         return "";
     }
+
+    public static String judgeCarState(String type){
+        if(type == null || type.length()<=0){
+            return "";
+        }
+        if(type.equals("P")){
+            return "等待确认";
+        }
+        if(type.equals("N")){
+            return "已确认";
+        }
+        if(type.equals("C")){
+            return "等待删除";
+        }
+        if(type.equals("D")){
+            return "已删除";
+        }
+        return "";
+    }
 }

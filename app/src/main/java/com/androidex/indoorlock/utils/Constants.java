@@ -51,4 +51,8 @@ public interface Constants {
     int EVENT_WHAT_OWNER_RESULT = 41; //请求业主信息回调
     int EVENT_WHAT_APPLY_HOUSE = 42; //申请房屋
     int EVENT_WHAT_APPLY_HOUSE_RESULT = 43; //申请房屋回调
+    int EVENT_WHAT_CAR = 44; //我的车辆
+    int EVENT_WHAT_CAR_RESULT = 45; //我的车辆回调
+    int EVENT_WHAT_APPLYCAT = 46; //申请车辆
+    int EVENT_WHAT_APPLYCAT_RESULT = 47; //申请车辆回调
 }

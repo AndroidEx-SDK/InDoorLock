@@ -224,6 +224,7 @@ public class RTCTools implements Constants {
                     RTCtoken = "";
                     RtcConst.UEAPPID_Current = RtcConst.UEAPPID_Self;
                     JSONObject jsonobj = HttpManager.getInstance().CreateTokenJson(0, model.user.mobile, RtcHttpClient.grantedCapabiltyID, "");
+                    //jsonobj.put("userTerminalType",RtcConst.UEType_Pad); //设置设备类型为pad
                     HttpResult ret = HttpManager.getInstance().getCapabilityToken(jsonobj, APP_ID, APP_KEY);
                     JSONObject jsonrsp = (JSONObject) ret.getObject();
                     if (jsonrsp != null && jsonrsp.isNull("code") == false) {
@@ -261,7 +262,8 @@ public class RTCTools implements Constants {
             jargs.put(RtcConst.kAccPwd,RTCtoken);
             jargs.put(RtcConst.kAccAppID,APP_ID);
             jargs.put(RtcConst.kAccUser,model.user.mobile); //号码
-            jargs.put(RtcConst.kAccType,RtcConst.UEType_Current);//终端类型
+            //jargs.put(RtcConst.kAccType,RtcConst.UEType_Pad);//指定终端类型为 pad
+            jargs.put(RtcConst.kAccType,RtcConst.UEType_Current); //默认类型
             device = mClt.createDevice(jargs.toString(), deviceListener); //注册
             mHandler.sendEmptyMessageDelayed(0x05,3*1000);
         }catch(Exception e){

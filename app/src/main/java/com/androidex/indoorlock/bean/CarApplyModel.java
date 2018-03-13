@@ -1,9 +1,9 @@
 package com.androidex.indoorlock.bean;
 
 /**
- * Created by Administrator on 2018/3/5.
+ * Created by Administrator on 2018/3/13.
  */
 
-public class UpdateModel {
+public class CarApplyModel {
     public int code;
 }
