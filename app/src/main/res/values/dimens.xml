@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="self_item_height">60dp</dimen>
+    <dimen name="self_item_text_marginLeft">15dp</dimen>
+
+    <dimen name="register_width">700dp</dimen>
+    <dimen name="register_height">70dp</dimen>
+    <dimen name="register_marginTop">30dp</dimen>
+</resources>
