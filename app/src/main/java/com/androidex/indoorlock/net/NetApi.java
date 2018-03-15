@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.androidex.indoorlock.bean.AccessModel;
+import com.androidex.indoorlock.bean.AdviceListModel;
 import com.androidex.indoorlock.bean.ApplyHouseModel;
 import com.androidex.indoorlock.bean.BlockListModel;
 import com.androidex.indoorlock.bean.CarApplyModel;
@@ -210,6 +211,14 @@ public class NetApi extends UrlTool{
 
         }
         String url = BASE_HEAD+APPLY_CAR;
+        new OkRequest.Builder().url(url).headers(getHeaders(getToken(data))).params(params).get(callBack);
+    }
+
+    public static void getAdviceList(Map<String,String> data,ResultCallBack<AdviceListModel> callBack){
+        RequestParams params = RequestParams.newInstance();
+        params.put("appKey", data.get("appKey"));
+        params.put("arrayLength",Integer.valueOf(data.get("arrayLength")));
+        String url = BASE_HEAD+RECEVICE_ADVICE;
         new OkRequest.Builder().url(url).headers(getHeaders(getToken(data))).params(params).get(callBack);
     }
 

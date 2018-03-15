@@ -55,4 +55,6 @@ public interface Constants {
     int EVENT_WHAT_CAR_RESULT = 45; //我的车辆回调
     int EVENT_WHAT_APPLYCAT = 46; //申请车辆
     int EVENT_WHAT_APPLYCAT_RESULT = 47; //申请车辆回调
+    int EVENT_WHAT_ADVICE = 48;// 投诉建议
+    int EVENT_WHAT_ADVICE_RESULT = 49; //投诉建议回调
 }

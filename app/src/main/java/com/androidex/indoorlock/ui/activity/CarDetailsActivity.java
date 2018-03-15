@@ -56,8 +56,20 @@ public class CarDetailsActivity extends BaseActivity {
                 this.finish();
                 break;
             case R.id.add:
+                startActivity(CarApplyActivity.class,null);
                 break;
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        showLoading("正在加载车辆信息...");
+        Map<String,String> data = new HashMap<>();
+        data.put("unitId",SharedPreTool.getIntValue(SharedPreTool.house_rid)+"");
+        data.put("appKey", Utils.getKey());
+        data.put("token",signModel.token);
+        postEvent(EVENT_WHAT_CAR,data);
     }
 
     @Override
@@ -96,11 +108,6 @@ public class CarDetailsActivity extends BaseActivity {
 
     @Override
     public void mainThread() {
-        showLoading("正在加载车辆信息...");
-        Map<String,String> data = new HashMap<>();
-        data.put("unitId",SharedPreTool.getIntValue(SharedPreTool.house_rid)+"");
-        data.put("appKey", Utils.getKey());
-        data.put("token",signModel.token);
-        postEvent(EVENT_WHAT_CAR,data);
+
     }
 }

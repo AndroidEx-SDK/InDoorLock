@@ -28,4 +28,5 @@ public abstract class UrlTool {
     public static final String OWNER_LIST = "/app/user/retrieveUnitOwnerList";
     public static final String CAR_LIST = "/app/unit/retrieveUnitRelatedInfo";
     public static final String APPLY_CAR = "/app/unit/saveUnitCar";
+    public static final String RECEVICE_ADVICE = "/app/advice/retrieveAdviceList";
 }

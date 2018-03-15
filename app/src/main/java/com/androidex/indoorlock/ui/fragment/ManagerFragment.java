@@ -9,6 +9,7 @@ import com.androidex.indoorlock.R;
 import com.androidex.indoorlock.adapter.ManagerAdapter;
 import com.androidex.indoorlock.base.BaseFragment;
 import com.androidex.indoorlock.ui.activity.AccessActivity;
+import com.androidex.indoorlock.ui.activity.AdviceActivity;
 import com.androidex.indoorlock.ui.activity.CarDetailsActivity;
 import com.androidex.indoorlock.ui.activity.DoorLockActivity;
 import com.androidex.indoorlock.ui.activity.TempKeyActivity;
@@ -72,6 +73,7 @@ public class ManagerFragment extends BaseFragment {
                         startActivity(CarDetailsActivity.class,null);
                         break;
                     case 7: //投诉建议
+                        startActivity(AdviceActivity.class,null);
                         break;
                     case 8: //维修申报
                         break;

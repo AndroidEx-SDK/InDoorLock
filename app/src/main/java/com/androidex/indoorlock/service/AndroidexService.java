@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.androidex.indoorlock.bean.AccessModel;
+import com.androidex.indoorlock.bean.AdviceListModel;
 import com.androidex.indoorlock.bean.ApplyHouseModel;
 import com.androidex.indoorlock.bean.BlockListModel;
 import com.androidex.indoorlock.bean.CarApplyModel;
@@ -150,6 +151,9 @@ public class AndroidexService extends Service implements Constants{
             case EVENT_WHAT_APPLYCAT:{
                 applyCar((Map<String, String>) event.msg);
             }break;
+            case EVENT_WHAT_ADVICE:{
+                getAdviceList((Map<String, String>) event.msg);
+            }break;
         }
     }
 
@@ -163,12 +167,34 @@ public class AndroidexService extends Service implements Constants{
         super.onDestroy();
     }
 
+    private void getAdviceList(Map<String,String> data){
+        NetApi.getAdviceList(data,new ResultCallBack<AdviceListModel>(){
+            @Override
+            public void onSuccess(int statusCode, Headers headers, AdviceListModel model) {
+                super.onSuccess(statusCode, headers, model);
+                postEvent(EVENT_WHAT_ADVICE_RESULT,model);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Request request, Exception e) {
+                super.onFailure(statusCode, request, e);
+                AdviceListModel model = new AdviceListModel();
+                if(Utils.isNetworkAvailable()){
+                    model.code = SERVER_ERROR;
+                }else{
+                    model.code = NETWORK_ERROR;
+                }
+                postEvent(EVENT_WHAT_ADVICE_RESULT,model);
+            }
+        });
+    }
+
     private void applyCar(Map<String,String> data){
         NetApi.applyCar(data,new ResultCallBack<CarApplyModel>(){
             @Override
             public void onSuccess(int statusCode, Headers headers, CarApplyModel model) {
                 super.onSuccess(statusCode, headers, model);
-                postEvent(EVENT_WHAT_APPLYCAT,model);
+                postEvent(EVENT_WHAT_APPLYCAT_RESULT,model);
             }
 
             @Override
@@ -180,7 +206,7 @@ public class AndroidexService extends Service implements Constants{
                 }else{
                     model.code = NETWORK_ERROR;
                 }
-                postEvent(EVENT_WHAT_APPLYCAT,model);
+                postEvent(EVENT_WHAT_APPLYCAT_RESULT,model);
             }
         });
     }

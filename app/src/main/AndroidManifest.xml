@@ -52,6 +52,8 @@
         <activity android:name=".ui.activity.ApplyHouseActivity"></activity>
         <activity android:name=".ui.activity.CarDetailsActivity"></activity>
         <activity android:name=".ui.activity.CarApplyActivity"></activity>
+        <activity android:name=".ui.activity.AdviceActivity"></activity>
+        <activity android:name=".ui.activity.AdviceDetailsActivity"></activity>
     </application>
 
 </manifest>
