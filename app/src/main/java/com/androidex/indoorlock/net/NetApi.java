@@ -14,6 +14,7 @@ import com.androidex.indoorlock.bean.CommuntityListModel;
 import com.androidex.indoorlock.bean.CreateTempKeyModel;
 import com.androidex.indoorlock.bean.HouseDetailModel;
 import com.androidex.indoorlock.bean.OwnerListModel;
+import com.androidex.indoorlock.bean.PropertyDataModel;
 import com.androidex.indoorlock.bean.RegisterModel;
 import com.androidex.indoorlock.bean.SignModel;
 import com.androidex.indoorlock.bean.TempKeyModel;
@@ -221,6 +222,16 @@ public class NetApi extends UrlTool{
         String url = BASE_HEAD+RECEVICE_ADVICE;
         new OkRequest.Builder().url(url).headers(getHeaders(getToken(data))).params(params).get(callBack);
     }
+
+
+    public static void getPropertyData(Map<String,String> data,ResultCallBack<PropertyDataModel> callBack){
+        RequestParams params = RequestParams.newInstance();
+        params.put("appKey", data.get("appKey"));
+        params.put("arrayLength",Integer.valueOf(data.get("arrayLength")));
+        String url = BASE_HEAD+RECEVICE_PROPERTY;
+        new OkRequest.Builder().url(url).headers(getHeaders(getToken(data))).params(params).get(callBack);
+    }
+
 
 
 

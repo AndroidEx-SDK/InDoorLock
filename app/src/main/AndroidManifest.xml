@@ -18,7 +18,7 @@
         tools:replace="name"
         android:name=".AndroidexApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_dyzn_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -54,6 +54,7 @@
         <activity android:name=".ui.activity.CarApplyActivity"></activity>
         <activity android:name=".ui.activity.AdviceActivity"></activity>
         <activity android:name=".ui.activity.AdviceDetailsActivity"></activity>
+        <activity android:name=".ui.activity.ContactPropertyActivity"></activity>
     </application>
 
 </manifest>

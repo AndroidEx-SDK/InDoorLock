@@ -57,4 +57,6 @@ public interface Constants {
     int EVENT_WHAT_APPLYCAT_RESULT = 47; //申请车辆回调
     int EVENT_WHAT_ADVICE = 48;// 投诉建议
     int EVENT_WHAT_ADVICE_RESULT = 49; //投诉建议回调
+    int EVENT_WHAT_PROPERTY = 50; //获取物业联系方式
+    int EVENT_WHAT_PROPERTY_RESULT = 51; //物业联系方式回调
 }

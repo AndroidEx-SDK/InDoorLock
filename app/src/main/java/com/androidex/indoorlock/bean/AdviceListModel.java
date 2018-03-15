@@ -1,15 +1,16 @@
 package com.androidex.indoorlock.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Administrator on 2018/3/14.
  */
 
-public class AdviceListModel {
+public class AdviceListModel implements Serializable{
     public int code;
     public List<Advice> data;
-    public class Advice{
+    public class Advice implements Serializable{
         public int rid;
         public String adviceTitle;
         public String remark;

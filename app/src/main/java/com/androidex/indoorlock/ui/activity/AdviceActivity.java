@@ -1,5 +1,6 @@
 package com.androidex.indoorlock.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
@@ -25,12 +26,11 @@ import java.util.Map;
 public class AdviceActivity extends BaseActivity {
     private LinearLayout backLayout;
     private TextView title;
-    private TextView menu;
     private ListView listview;
-    private int rid = -1;
+
     @Override
     public void initParms(Bundle parms) {
-        rid = parms.getInt("rid");
+
     }
 
     @Override
@@ -44,9 +44,6 @@ public class AdviceActivity extends BaseActivity {
         backLayout.setOnClickListener(this);
         title = findViewById(R.id.title);
         title.setText("投诉建议");
-        menu = findViewById(R.id.menu);
-        menu.setText("新建");
-        menu.setOnClickListener(this);
         listview = findViewById(R.id.listview);
     }
 
@@ -87,9 +84,9 @@ public class AdviceActivity extends BaseActivity {
                 listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Bundle b = new Bundle();
-                        b.putInt("rid",model.data.get(i).rid);
-                        startActivity(AdviceActivity.class,b);
+                        Intent intent = new Intent(AdviceActivity.this,AdviceDetailsActivity.class);
+                        intent.putExtra("advice",model.data.get(i));
+                        startActivity(intent);
                     }
                 });
             }

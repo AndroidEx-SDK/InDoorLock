@@ -21,6 +21,7 @@ import com.androidex.indoorlock.bean.CreateTempKeyModel;
 import com.androidex.indoorlock.bean.Event;
 import com.androidex.indoorlock.bean.HouseDetailModel;
 import com.androidex.indoorlock.bean.OwnerListModel;
+import com.androidex.indoorlock.bean.PropertyDataModel;
 import com.androidex.indoorlock.bean.RegisterModel;
 import com.androidex.indoorlock.bean.SignModel;
 import com.androidex.indoorlock.bean.TempKeyModel;
@@ -154,6 +155,9 @@ public class AndroidexService extends Service implements Constants{
             case EVENT_WHAT_ADVICE:{
                 getAdviceList((Map<String, String>) event.msg);
             }break;
+            case EVENT_WHAT_PROPERTY:{
+                getPropertyData((Map<String, String>) event.msg);
+            }break;
         }
     }
 
@@ -165,6 +169,28 @@ public class AndroidexService extends Service implements Constants{
         showL("service 注销完成");
         postEvent(EVENT_WHAT_SIGN_OUT_CALLBACK);
         super.onDestroy();
+    }
+
+    private void getPropertyData(Map<String,String> data){
+        NetApi.getPropertyData(data,new ResultCallBack<PropertyDataModel>(){
+            @Override
+            public void onSuccess(int statusCode, Headers headers, PropertyDataModel model) {
+                super.onSuccess(statusCode, headers, model);
+                postEvent(EVENT_WHAT_PROPERTY_RESULT,model);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Request request, Exception e) {
+                super.onFailure(statusCode, request, e);
+                PropertyDataModel model = new PropertyDataModel();
+                if(Utils.isNetworkAvailable()){
+                    model.code = SERVER_ERROR;
+                }else{
+                    model.code = NETWORK_ERROR;
+                }
+                postEvent(EVENT_WHAT_PROPERTY_RESULT,model);
+            }
+        });
     }
 
     private void getAdviceList(Map<String,String> data){
