@@ -32,14 +32,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".service.AndroidexService"></service>
-        <activity android:name=".ui.activity.LoginActivity"></activity>
-        <activity android:name=".ui.activity.HomeActivity"></activity>
         <service android:name="rtc.sdk.impl.SdkService" >
             <intent-filter>
                 <action android:name="rtc.sdk.service" />
             </intent-filter>
         </service>
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity" />
+        <service android:name=".service.AndroidexService"></service>
+        <activity android:name=".ui.activity.LoginActivity"></activity>
+        <activity android:name=".ui.activity.HomeActivity"></activity>
         <activity android:name=".ui.activity.TelephoneActivity"></activity>
         <activity android:name=".ui.activity.HelpActivity"></activity>
         <activity android:name=".ui.activity.CouponActivity"></activity>
@@ -60,9 +63,7 @@
         <activity android:name=".ui.activity.TroubleActivity"></activity>
         <activity android:name=".ui.activity.TroubleDetailsActivity"></activity>
         <activity android:name=".ui.activity.TroubleCreateActivity"></activity>
-        <activity
-            android:configChanges="orientation|screenSize"
-            android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity" />
+        <activity android:name=".ui.activity.BillActivity"></activity>
     </application>
 
 </manifest>

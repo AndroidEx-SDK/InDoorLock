@@ -58,7 +58,7 @@ public class TroubleActivity extends BaseActivity {
                 this.finish();
                 break;
             case R.id.menu:
-                startActivity(TroubleCreateActivity.class,null);
+                //startActivity(TroubleCreateActivity.class,null); //图片提交接口不可用，先屏蔽
                 break;
         }
     }

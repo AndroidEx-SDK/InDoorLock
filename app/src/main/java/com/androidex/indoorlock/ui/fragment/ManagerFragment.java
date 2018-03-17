@@ -10,6 +10,7 @@ import com.androidex.indoorlock.adapter.ManagerAdapter;
 import com.androidex.indoorlock.base.BaseFragment;
 import com.androidex.indoorlock.ui.activity.AccessActivity;
 import com.androidex.indoorlock.ui.activity.AdviceActivity;
+import com.androidex.indoorlock.ui.activity.BillActivity;
 import com.androidex.indoorlock.ui.activity.CarDetailsActivity;
 import com.androidex.indoorlock.ui.activity.ContactPropertyActivity;
 import com.androidex.indoorlock.ui.activity.DoorLockActivity;
@@ -63,6 +64,7 @@ public class ManagerFragment extends BaseFragment {
                         startActivity(AccessActivity.class,null);
                         break;
                     case 4: //物业缴费
+                        startActivity(BillActivity.class,null);
                         break;
                     case 5: //我的房屋
                         startActivity(HouseActivity.class,null);

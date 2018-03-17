@@ -14,19 +14,23 @@ public class SignModel implements Serializable {
     public String token;
     public User user;
     public class User implements Serializable {
-        public String cardNo;
-        public String cardType;
-        public String isVip;
-        public String lastAccessTime;
-
-        public String lastAccessUuid;
-        public int lastDeviceSwitch;
-        public String mobile;
-        public String password;
-
-        public String realname;
         public int rid;
         public String username;
+        public String password;
+        public String headimgurl;
+        public String mobile;
+        public String realname;
+        public String cardType;
+        public String cardNo;
+        public String startDate;
+        public String endDate;
+        public String openid;
+        public String finger;
+        public String cardImage;
+        public String isVip;
+        public String lastAccessTime;
+        public String lastAccessUuid;
+        public int lastDeviceSwitch;
 
     }
     public class LockList implements Serializable {

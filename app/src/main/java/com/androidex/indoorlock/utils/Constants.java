@@ -61,4 +61,6 @@ public interface Constants {
     int EVENT_WHAT_PROPERTY_RESULT = 51; //物业联系方式回调
     int EVENT_WHAT_TROUBLE = 52; //投诉建议
     int EVENT_WHAT_TROUBLE_RESULT = 53; //投诉建议回调
+    int EVENT_WHAT_UPLOAD_IMAGE = 54;//文件上传
+    int EVENT_WHAT_UPLOAD_IMAGE_RESULT = 55;//文件上传回调
 }

@@ -1,6 +1,8 @@
 package com.androidex.indoorlock.ui.fragment;
 
+import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +16,10 @@ import com.androidex.indoorlock.ui.activity.HouseActivity;
 import com.androidex.indoorlock.ui.activity.UpdateActivity;
 import com.androidex.indoorlock.utils.SharedPreTool;
 import com.androidex.indoorlock.view.MessageAlert;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 /**
  * Created by Administrator on 2018/2/28.
@@ -30,6 +36,8 @@ public class SelfFragment extends BaseFragment{
     private LinearLayout signExitLayout;
     private LinearLayout helpLayout;
     private MessageAlert messageAlert;
+
+    private ImageView centerHeadIcon;
 
     @Override
     protected int getLayoutId() {
@@ -66,6 +74,20 @@ public class SelfFragment extends BaseFragment{
 
         helpLayout = findViewById(R.id.self_help);
         helpLayout.setOnClickListener(this);
+
+        centerHeadIcon = findViewById(R.id.center_user_icon);
+        Glide.with(this).load(model.user.headimgurl).into(new SimpleTarget<GlideDrawable>() {
+            @Override
+            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                centerHeadIcon.setImageDrawable(resource);
+            }
+
+            @Override
+            public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                super.onLoadFailed(e, errorDrawable);
+                centerHeadIcon.setImageResource(R.mipmap.ic_gg);
+            }
+        });
     }
 
     @Override

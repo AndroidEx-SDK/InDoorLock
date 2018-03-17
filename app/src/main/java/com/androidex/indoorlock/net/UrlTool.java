@@ -31,4 +31,5 @@ public abstract class UrlTool {
     public static final String RECEVICE_ADVICE = "/app/advice/retrieveAdviceList";
     public static final String RECEVICE_PROPERTY = "/app/unit/retrieveContactList";
     public static final String RECEVICE_TROUBLE = "/app/trouble/retrieveTroubleList";
+    public static final String UP_LOAD_IMAGE = "/app/upload/image";
 }

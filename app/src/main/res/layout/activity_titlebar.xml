@@ -43,7 +43,7 @@
         android:textColor="#ffffff"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:gravity="center"
-        android:layout_width="80dp"
+        android:gravity="center_vertical|right"
+        android:layout_width="200dp"
         android:layout_height="match_parent" />
 </RelativeLayout>

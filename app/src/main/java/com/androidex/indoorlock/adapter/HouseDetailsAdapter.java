@@ -1,6 +1,7 @@
 package com.androidex.indoorlock.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,9 @@ import com.androidex.indoorlock.R;
 import com.androidex.indoorlock.bean.HouseDetailModel;
 import com.androidex.indoorlock.utils.Utils;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 import java.util.List;
 
@@ -46,7 +50,7 @@ public class HouseDetailsAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
-        ViewHolder holder = null;
+        final ViewHolder holder;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.activity_housedetails_item, viewGroup, false); //加载布局
             holder = new ViewHolder();
@@ -57,9 +61,17 @@ public class HouseDetailsAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        if(data.get(i).headimgurl!=null){
-            Glide.with(context).load(data.get(i).headimgurl).placeholder(R.mipmap.ic_default).error(R.mipmap.ic_default).into(holder.headimage);
-        }
+        Glide.with(context).load(data.get(i).headimgurl).into(new SimpleTarget<GlideDrawable>() {
+            @Override
+            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                holder.headimage.setImageDrawable(resource);
+            }
+            @Override
+            public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                super.onLoadFailed(e, errorDrawable);
+                holder.headimage.setImageResource(R.mipmap.ic_default);
+            }
+        });
         holder.name.setText(data.get(i).realname);
         holder.type.setText(Utils.judgeUserType(data.get(i).userType));
         return convertView;

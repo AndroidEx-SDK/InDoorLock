@@ -18,6 +18,7 @@ import com.androidex.indoorlock.adapter.SlectPhotoAdapter;
 import com.androidex.indoorlock.base.BaseActivity;
 import com.androidex.indoorlock.bean.Event;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import me.nereo.multi_image_selector.MultiImageSelector;
@@ -92,6 +93,8 @@ public class TroubleCreateActivity extends BaseActivity {
             if(resultCode == RESULT_OK){
                 mSelectPath = data.getStringArrayListExtra(MultiImageSelector.EXTRA_RESULT);
                 if(mSelectPath!=null && mSelectPath.size()>0){
+                    showLoading("正在提交图片...");
+                    postEvent(EVENT_WHAT_UPLOAD_IMAGE,new File(mSelectPath.get(0)));
                     recyclerView.setAdapter(new SlectPhotoAdapter(this,mSelectPath));
                 }
             }
@@ -105,7 +108,9 @@ public class TroubleCreateActivity extends BaseActivity {
 
     @Override
     public void onEvent(Event event) {
-
+        if(event.what == EVENT_WHAT_UPLOAD_IMAGE_RESULT){
+            hideLoadingDialog();
+        }
     }
 
     @Override
@@ -132,7 +137,4 @@ public class TroubleCreateActivity extends BaseActivity {
             return;
         }
     }
-
-    private void
-
 }

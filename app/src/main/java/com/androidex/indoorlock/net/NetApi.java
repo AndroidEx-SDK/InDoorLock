@@ -21,6 +21,7 @@ import com.androidex.indoorlock.bean.TempKeyModel;
 import com.androidex.indoorlock.bean.TroubleListModel;
 import com.androidex.indoorlock.bean.UnitListModel;
 import com.androidex.indoorlock.bean.UpdateModel;
+import com.androidex.indoorlock.net.base.FileUploadModel;
 import com.androidex.indoorlock.net.base.OkRequest;
 import com.androidex.indoorlock.net.base.RequestParams;
 import com.androidex.indoorlock.net.base.ResultCallBack;
@@ -28,6 +29,7 @@ import com.androidex.indoorlock.utils.Utils;
 
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.Map;
 
 import okhttp3.Headers;
@@ -240,6 +242,14 @@ public class NetApi extends UrlTool{
         String url = BASE_HEAD+RECEVICE_TROUBLE;
         new OkRequest.Builder().url(url).headers(getHeaders(getToken(data))).params(params).get(callBack);
     }
+
+    public static void uploadPhoto(File file, ResultCallBack<FileUploadModel> callBack) {
+        RequestParams params = RequestParams.newInstance()
+                .put("_parts", file, RequestParams.MEDIA.JPG);
+        String url = BASE_HEAD+UP_LOAD_IMAGE;
+        new OkRequest.Builder().url(url).params(params).post(callBack);
+    }
+
 
 
 

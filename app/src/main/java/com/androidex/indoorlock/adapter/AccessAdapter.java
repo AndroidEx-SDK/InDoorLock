@@ -1,6 +1,7 @@
 package com.androidex.indoorlock.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,9 @@ import com.androidex.indoorlock.bean.AccessModel;
 import com.androidex.indoorlock.net.UrlTool;
 import com.androidex.indoorlock.utils.Utils;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 import java.util.List;
 
@@ -46,7 +50,7 @@ public class AccessAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
-        ViewHolder holder = null;
+        final ViewHolder holder;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.activity_access_item, viewGroup, false); //加载布局
             holder = new ViewHolder();
@@ -60,7 +64,17 @@ public class AccessAdapter extends BaseAdapter {
         holder.tempKey.setText(data.get(i).lockName);
         holder.time.setText(Utils.UTCStringtODefaultString(data.get(i).creDate));
         String url = UrlTool.BASE_HEAD+data.get(i).imageUrl;
-        Glide.with(context).load(url).placeholder(R.mipmap.ic_default).error(R.mipmap.ic_default).crossFade().into(holder.head);
+        Glide.with(context).load(url).into(new SimpleTarget<GlideDrawable>() {
+            @Override
+            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                holder.head.setImageDrawable(resource);
+            }
+
+            @Override
+            public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                holder.head.setImageResource(R.mipmap.ic_default);
+            }
+        });
         return convertView;
     }
     private class ViewHolder {

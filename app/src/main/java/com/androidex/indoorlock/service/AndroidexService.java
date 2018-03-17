@@ -29,6 +29,7 @@ import com.androidex.indoorlock.bean.TroubleListModel;
 import com.androidex.indoorlock.bean.UnitListModel;
 import com.androidex.indoorlock.bean.UpdateModel;
 import com.androidex.indoorlock.net.NetApi;
+import com.androidex.indoorlock.net.base.FileUploadModel;
 import com.androidex.indoorlock.net.base.ResultCallBack;
 import com.androidex.indoorlock.ui.activity.LoginActivity;
 import com.androidex.indoorlock.utils.Constants;
@@ -40,6 +41,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -162,6 +164,9 @@ public class AndroidexService extends Service implements Constants{
             case EVENT_WHAT_TROUBLE:{
                 getTroubleList((Map<String, String>) event.msg);
             }break;
+            case EVENT_WHAT_UPLOAD_IMAGE:{
+                uploadPhoto((File) event.msg);
+            }break;
         }
     }
 
@@ -173,6 +178,28 @@ public class AndroidexService extends Service implements Constants{
         showL("service 注销完成");
         postEvent(EVENT_WHAT_SIGN_OUT_CALLBACK);
         super.onDestroy();
+    }
+
+    private void uploadPhoto(File file){
+        NetApi.uploadPhoto(file,new ResultCallBack<FileUploadModel>(){
+            @Override
+            public void onSuccess(int statusCode, Headers headers, FileUploadModel model) {
+                super.onSuccess(statusCode, headers, model);
+                postEvent(EVENT_WHAT_UPLOAD_IMAGE_RESULT,model);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Request request, Exception e) {
+                super.onFailure(statusCode, request, e);
+                FileUploadModel model = new FileUploadModel();
+                if(Utils.isNetworkAvailable()){
+                    model.code = SERVER_ERROR;
+                }else{
+                    model.code = NETWORK_ERROR;
+                }
+                postEvent(EVENT_WHAT_UPLOAD_IMAGE_RESULT,model);
+            }
+        });
     }
 
     private void getTroubleList(Map<String,String> data){
