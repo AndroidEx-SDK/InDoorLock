@@ -25,6 +25,7 @@ import com.androidex.indoorlock.bean.PropertyDataModel;
 import com.androidex.indoorlock.bean.RegisterModel;
 import com.androidex.indoorlock.bean.SignModel;
 import com.androidex.indoorlock.bean.TempKeyModel;
+import com.androidex.indoorlock.bean.TroubleListModel;
 import com.androidex.indoorlock.bean.UnitListModel;
 import com.androidex.indoorlock.bean.UpdateModel;
 import com.androidex.indoorlock.net.NetApi;
@@ -158,6 +159,9 @@ public class AndroidexService extends Service implements Constants{
             case EVENT_WHAT_PROPERTY:{
                 getPropertyData((Map<String, String>) event.msg);
             }break;
+            case EVENT_WHAT_TROUBLE:{
+                getTroubleList((Map<String, String>) event.msg);
+            }break;
         }
     }
 
@@ -169,6 +173,28 @@ public class AndroidexService extends Service implements Constants{
         showL("service 注销完成");
         postEvent(EVENT_WHAT_SIGN_OUT_CALLBACK);
         super.onDestroy();
+    }
+
+    private void getTroubleList(Map<String,String> data){
+        NetApi.getTroubleList(data,new ResultCallBack<TroubleListModel>(){
+            @Override
+            public void onSuccess(int statusCode, Headers headers, TroubleListModel model) {
+                super.onSuccess(statusCode, headers, model);
+                postEvent(EVENT_WHAT_TROUBLE_RESULT,model);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Request request, Exception e) {
+                super.onFailure(statusCode, request, e);
+                TroubleListModel model = new TroubleListModel();
+                if(Utils.isNetworkAvailable()){
+                    model.code = SERVER_ERROR;
+                }else{
+                    model.code = NETWORK_ERROR;
+                }
+                postEvent(EVENT_WHAT_TROUBLE_RESULT,model);
+            }
+        });
     }
 
     private void getPropertyData(Map<String,String> data){

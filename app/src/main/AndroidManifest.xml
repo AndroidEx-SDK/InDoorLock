@@ -13,6 +13,8 @@
     <uses-permission android:name="android.hardware.camera"></uses-permission>
     <uses-permission android:name="android.hardware.camera.autofocus"></uses-permission>
     <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
 
     <application
         tools:replace="name"
@@ -55,6 +57,12 @@
         <activity android:name=".ui.activity.AdviceActivity"></activity>
         <activity android:name=".ui.activity.AdviceDetailsActivity"></activity>
         <activity android:name=".ui.activity.ContactPropertyActivity"></activity>
+        <activity android:name=".ui.activity.TroubleActivity"></activity>
+        <activity android:name=".ui.activity.TroubleDetailsActivity"></activity>
+        <activity android:name=".ui.activity.TroubleCreateActivity"></activity>
+        <activity
+            android:configChanges="orientation|screenSize"
+            android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity" />
     </application>
 
 </manifest>

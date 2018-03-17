@@ -1,6 +1,8 @@
 package com.androidex.indoorlock.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,9 @@ import com.androidex.indoorlock.R;
 import com.androidex.indoorlock.bean.AdviceListModel;
 import com.androidex.indoorlock.utils.Utils;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 import java.util.List;
 
@@ -46,7 +51,7 @@ public class AdviceAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder holder = null;
+        final ViewHolder holder;
         if(view == null){
             view = inflater.inflate(R.layout.activity_advice_item, viewGroup, false);
             holder = new ViewHolder();
@@ -60,8 +65,17 @@ public class AdviceAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
         String headimgurl = data.get(i).headimgurl;
-        Glide.with(context).load(headimgurl).placeholder(R.mipmap.ic_default).error(R.mipmap.ic_default).into(holder.headImage);
-
+        Glide.with(context).load(headimgurl).placeholder(R.mipmap.ic_default).error(R.mipmap.ic_default).into(new SimpleTarget<GlideDrawable>() {
+            @Override
+            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                holder.headImage.setImageDrawable(resource);
+            }
+            @Override
+            public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                super.onLoadFailed(e, errorDrawable);
+                holder.headImage.setImageResource(R.mipmap.ic_default);
+            }
+        });
         String realname = data.get(i).realname;
         if(realname == null || realname.length()<=0){
             realname = "未知用户";

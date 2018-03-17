@@ -3,53 +3,47 @@ package com.androidex.indoorlock.ui.activity;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.androidex.indoorlock.R;
 import com.androidex.indoorlock.base.BaseActivity;
-import com.androidex.indoorlock.bean.AdviceListModel;
 import com.androidex.indoorlock.bean.Event;
+import com.androidex.indoorlock.bean.TroubleListModel;
 import com.androidex.indoorlock.utils.Utils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2018/3/14.
+ * Created by Administrator on 2018/3/16.
  */
 
-public class AdviceDetailsActivity extends BaseActivity {
-    private AdviceListModel.Advice advice;
+public class TroubleDetailsActivity extends BaseActivity {
+    private TroubleListModel.Trouble trouble;
     private LinearLayout backLayout;
     private TextView title;
 
-    private TextView adviceTitle;
+    private TextView troubleTitle;
     private TextView time;
     private TextView content;
     private LinearLayout imageLayout;
 
-
     @Override
     public void initParms(Bundle parms) {
-        advice = (AdviceListModel.Advice) getIntent().getSerializableExtra("advice");
+        trouble = (TroubleListModel.Trouble) parms.getSerializable("trouble");
     }
 
     @Override
     public int bindView() {
-        return R.layout.activity_advicedetails;
+        return R.layout.activity_troubledetails;
     }
 
     @Override
@@ -59,33 +53,31 @@ public class AdviceDetailsActivity extends BaseActivity {
         title = findViewById(R.id.title);
         title.setText("详情");
 
-        adviceTitle = findViewById(R.id.advice_title);
-        adviceTitle.setText(advice.adviceTitle);
+        troubleTitle = findViewById(R.id.trouble_title);
+        troubleTitle.setText(trouble.troubleTitle);
         time = findViewById(R.id.time);
-        time.setText(Utils.UTCStringtODefaultString(advice.creDate));
+        time.setText(Utils.UTCStringtODefaultString(trouble.creDate));
+
         content = findViewById(R.id.content);
-        content.setText(advice.remark);
+        content.setText(trouble.remark);
+
         imageLayout = findViewById(R.id.imageLayout);
-        ArrayList<String> images = JSON.parseObject(advice.images, new TypeReference<ArrayList<String>>() {});
-        addImage(images);
-//        try {
-//            JSONArray jsonArray = new JSONArray(advice.images);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
+        ArrayList<String> images = JSON.parseObject(trouble.images, new TypeReference<ArrayList<String>>() {});
+        appendImageLayout(images);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
+        switch (view.getId()){
             case R.id.back:
                 this.finish();
                 break;
         }
     }
 
-    private void addImage(List<String> data) {
+    private void appendImageLayout(List<String> data) {
         for (int i = 0; i < data.size(); i++) {
+            showL("地址："+data.get(i));
             final ImageView imageView = new ImageView(this);
             int left, top, right, bottom;
             left = top = right = bottom = 64;

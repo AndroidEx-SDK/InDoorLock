@@ -15,6 +15,7 @@ import com.androidex.indoorlock.ui.activity.ContactPropertyActivity;
 import com.androidex.indoorlock.ui.activity.DoorLockActivity;
 import com.androidex.indoorlock.ui.activity.TempKeyActivity;
 import com.androidex.indoorlock.ui.activity.HouseActivity;
+import com.androidex.indoorlock.ui.activity.TroubleActivity;
 import com.androidex.indoorlock.utils.SharedPreTool;
 
 /**
@@ -77,6 +78,7 @@ public class ManagerFragment extends BaseFragment {
                         startActivity(AdviceActivity.class,null);
                         break;
                     case 8: //维修申报
+                        startActivity(TroubleActivity.class,null);
                         break;
                     case 9: //物业联系
                         startActivity(ContactPropertyActivity.class,null);

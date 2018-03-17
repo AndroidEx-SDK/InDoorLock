@@ -18,6 +18,7 @@ import com.androidex.indoorlock.bean.PropertyDataModel;
 import com.androidex.indoorlock.bean.RegisterModel;
 import com.androidex.indoorlock.bean.SignModel;
 import com.androidex.indoorlock.bean.TempKeyModel;
+import com.androidex.indoorlock.bean.TroubleListModel;
 import com.androidex.indoorlock.bean.UnitListModel;
 import com.androidex.indoorlock.bean.UpdateModel;
 import com.androidex.indoorlock.net.base.OkRequest;
@@ -229,6 +230,14 @@ public class NetApi extends UrlTool{
         params.put("appKey", data.get("appKey"));
         params.put("arrayLength",Integer.valueOf(data.get("arrayLength")));
         String url = BASE_HEAD+RECEVICE_PROPERTY;
+        new OkRequest.Builder().url(url).headers(getHeaders(getToken(data))).params(params).get(callBack);
+    }
+
+    public static void getTroubleList(Map<String,String> data, ResultCallBack<TroubleListModel> callBack){
+        RequestParams params = RequestParams.newInstance();
+        params.put("appKey", data.get("appKey"));
+        params.put("arrayLength",Integer.valueOf(data.get("arrayLength")));
+        String url = BASE_HEAD+RECEVICE_TROUBLE;
         new OkRequest.Builder().url(url).headers(getHeaders(getToken(data))).params(params).get(callBack);
     }
 

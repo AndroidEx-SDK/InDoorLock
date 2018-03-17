@@ -208,4 +208,23 @@ public class Utils {
         }
         return "";
     }
+
+    public static String judgeTroubleState(String state){
+        if(state == null || state.length()<=0){
+            return "";
+        }
+        if(state.equals("N")){
+            return "新建议";
+        }
+        if(state.equals("S")){
+            return "已采纳";
+        }
+        if(state.equals("W")){
+            return "已完成";
+        }
+        if(state.equals("D")){
+            return "已删除";
+        }
+        return "";
+    }
 }
