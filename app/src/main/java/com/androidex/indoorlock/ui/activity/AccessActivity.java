@@ -63,17 +63,19 @@ public class AccessActivity extends BaseActivity {
         switch (event.what){
             case EVENT_WHAT_RECEVICE_ACCESS_RESULT:
                 hideLoadingDialog();
-                AccessModel accessModel = (AccessModel) event.msg;
-                if(accessModel!=null){
-                    if(accessModel.code == 0){
-                        if(accessModel.data!=null && accessModel.data.size()>0){
-                            listView.setAdapter(new AccessAdapter(this,accessModel.data));
+                AccessModel model = (AccessModel) event.msg;
+                if(model!=null){
+                    if(model.code == 0){
+                        if(model.data!=null && model.data.size()>0){
+                            listView.setAdapter(new AccessAdapter(this,model.data));
                         }
-                    }else if(accessModel.code == NETWORK_ERROR){
+                    }else if(model.code == NETWORK_ERROR){
                         showToast(false,"请检查网络");
-                    }else if(accessModel.code ==SERVER_ERROR){
+                    }else if(model.code ==SERVER_ERROR){
                         showToast(false,"服务器异常");
                     }
+                }else{
+                    showToast(false,"资源获取出错，请稍后再试");
                 }
                 break;
         }

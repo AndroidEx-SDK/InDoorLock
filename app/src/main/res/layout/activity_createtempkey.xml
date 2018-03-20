@@ -26,7 +26,6 @@
         <EditText
             android:id="@+id/name"
             android:hint="请输入姓名"
-            android:text="tt"
             android:background="#ffffffff"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
@@ -51,7 +50,6 @@
         <EditText
             android:id="@+id/mobile"
             android:hint="请输入电话号码"
-            android:text="15519709045"
             android:inputType="number"
             android:background="#ffffffff"
             android:layout_width="match_parent"

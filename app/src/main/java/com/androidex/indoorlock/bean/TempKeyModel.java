@@ -1,5 +1,7 @@
 package com.androidex.indoorlock.bean;
 
+import com.androidex.indoorlock.base.BaseBean;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -7,8 +9,7 @@ import java.util.List;
  * Created by Administrator on 2018/3/6.
  */
 
-public class TempKeyModel implements Serializable{
-    public int code;
+public class TempKeyModel extends BaseBean {
     public List<Data> data;
     public class Data implements Serializable{
         public int rid = -1;

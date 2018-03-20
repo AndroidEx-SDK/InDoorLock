@@ -73,7 +73,7 @@ public class DoorLockActivity extends BaseActivity {
     @Override
     public void mainThread() {
         model = (SignModel) SharedPreTool.getObject(SharedPreTool.sign_model);
-        if(model!=null && model.data.size()>0){
+        if(model!=null && model.data!=null && model.data.size()>0){
             lockLayout.setVisibility(View.VISIBLE);
             error.setVisibility(View.GONE);
             listView.setAdapter(new HouseAdapter(this,model.data));
@@ -102,6 +102,11 @@ public class DoorLockActivity extends BaseActivity {
         }else{
             lockLayout.setVisibility(View.GONE);
             error.setVisibility(View.VISIBLE);
+            if(model.code == NETWORK_ERROR){
+                showToast(false,"请检查网络");
+            }else if(model.code ==SERVER_ERROR){
+                showToast(false,"服务器异常");
+            }
         }
     }
 }

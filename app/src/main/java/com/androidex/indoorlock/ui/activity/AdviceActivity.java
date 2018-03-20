@@ -79,16 +79,26 @@ public class AdviceActivity extends BaseActivity {
         if(event.what == EVENT_WHAT_ADVICE_RESULT){
             hideLoadingDialog();
             final AdviceListModel model = (AdviceListModel) event.msg;
-            if(model!=null && model.data!=null && model.data.size()>0){
-                listview.setAdapter(new AdviceAdapter(this,model.data));
-                listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Intent intent = new Intent(AdviceActivity.this,AdviceDetailsActivity.class);
-                        intent.putExtra("advice",model.data.get(i));
-                        startActivity(intent);
+            if(model != null){
+               if(model.code == 0){
+                    if(model.data!=null && model.data.size()>0){
+                        listview.setAdapter(new AdviceAdapter(this,model.data));
+                        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                Intent intent = new Intent(AdviceActivity.this,AdviceDetailsActivity.class);
+                                intent.putExtra("advice",model.data.get(i));
+                                startActivity(intent);
+                            }
+                        });
                     }
-                });
+               }else if(model.code == NETWORK_ERROR){
+                   showToast(false,"请检查网络");
+               }else if(model.code ==SERVER_ERROR){
+                   showToast(false,"服务器异常");
+               }
+            }else{
+                showToast(false,"资源获取出错，请稍后再试");
             }
         }
     }

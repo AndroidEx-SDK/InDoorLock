@@ -67,7 +67,13 @@ public class ContactPropertyActivity extends BaseActivity {
             if(model!=null && model.data!=null && model.data.size()>0){
                 listview.setAdapter(new PropertyAdapter(this,model.data));
             }else{
-                showToast(false,"数据获取失败，请稍后尝试");
+                if(model.code == NETWORK_ERROR){
+                    showToast(false,"请检查网络");
+                }else if(model.code == SERVER_ERROR){
+                    showToast(false,"服务器异常");
+                }else{
+                    showToast(false,"数据获取失败，请稍后重试");
+                }
             }
         }
     }

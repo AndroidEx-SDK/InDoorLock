@@ -9,9 +9,11 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.androidex.indoorlock.base.BaseBean;
 import com.androidex.indoorlock.bean.AccessModel;
 import com.androidex.indoorlock.bean.AdviceListModel;
 import com.androidex.indoorlock.bean.ApplyHouseModel;
+import com.androidex.indoorlock.bean.BaseApplyModel;
 import com.androidex.indoorlock.bean.BlockListModel;
 import com.androidex.indoorlock.bean.CarApplyModel;
 import com.androidex.indoorlock.bean.CarListModel;
@@ -29,6 +31,7 @@ import com.androidex.indoorlock.bean.TroubleListModel;
 import com.androidex.indoorlock.bean.UnitListModel;
 import com.androidex.indoorlock.bean.UpdateModel;
 import com.androidex.indoorlock.net.NetApi;
+import com.androidex.indoorlock.net.base.BaseModel;
 import com.androidex.indoorlock.net.base.FileUploadModel;
 import com.androidex.indoorlock.net.base.ResultCallBack;
 import com.androidex.indoorlock.ui.activity.LoginActivity;
@@ -214,11 +217,7 @@ public class AndroidexService extends Service implements Constants{
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
                 TroubleListModel model = new TroubleListModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorBaseModel(model);
                 postEvent(EVENT_WHAT_TROUBLE_RESULT,model);
             }
         });
@@ -236,11 +235,7 @@ public class AndroidexService extends Service implements Constants{
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
                 PropertyDataModel model = new PropertyDataModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorBaseModel(model);
                 postEvent(EVENT_WHAT_PROPERTY_RESULT,model);
             }
         });
@@ -258,11 +253,7 @@ public class AndroidexService extends Service implements Constants{
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
                 AdviceListModel model = new AdviceListModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorBaseModel(model);
                 postEvent(EVENT_WHAT_ADVICE_RESULT,model);
             }
         });
@@ -280,11 +271,7 @@ public class AndroidexService extends Service implements Constants{
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
                 CarApplyModel model = new CarApplyModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorBaseModel(model);
                 postEvent(EVENT_WHAT_APPLYCAT_RESULT,model);
             }
         });
@@ -302,11 +289,7 @@ public class AndroidexService extends Service implements Constants{
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
                 CarListModel model = new CarListModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorBaseModel(model);
                 postEvent(EVENT_WHAT_CAR_RESULT,model);
             }
         });
@@ -324,11 +307,7 @@ public class AndroidexService extends Service implements Constants{
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
                 ApplyHouseModel model = new ApplyHouseModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorApplyModel(model);
                 postEvent(EVENT_WHAT_APPLY_HOUSE_RESULT,model);
             }
         });
@@ -346,11 +325,7 @@ public class AndroidexService extends Service implements Constants{
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
                 OwnerListModel model = new OwnerListModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorApplyModel(model);
                 postEvent(EVENT_WHAT_OWNER_RESULT,model);
             }
         });
@@ -368,11 +343,7 @@ public class AndroidexService extends Service implements Constants{
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
                 UnitListModel model = new UnitListModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorApplyModel(model);
                 postEvent(EVENT_WHAT_RECEVICE_UNIT_RESULT,model);
             }
         });
@@ -390,11 +361,7 @@ public class AndroidexService extends Service implements Constants{
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
                 BlockListModel model = new BlockListModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorApplyModel(model);
                 postEvent(EVENT_WHAT_RECEVICE_BLOCK_RESULT,model);
             }
         });
@@ -412,11 +379,7 @@ public class AndroidexService extends Service implements Constants{
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
                 CommuntityListModel model = new CommuntityListModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorApplyModel(model);
                 postEvent(EVENT_WHAT_RECEVICE_COMMUNITY_RESULT,model);
             }
         });
@@ -434,11 +397,7 @@ public class AndroidexService extends Service implements Constants{
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
                 CityListModel model = new CityListModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorApplyModel(model);
                 postEvent(EVENT_WHAT_RECEVICE_CITYLIST_RESULT,model);
             }
 
@@ -458,11 +417,7 @@ public class AndroidexService extends Service implements Constants{
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
                 HouseDetailModel model = new HouseDetailModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorBaseModel(model);
                 postEvent(EVENT_WHAT_REGISTER_RESULT,model);
             }
         });
@@ -480,11 +435,7 @@ public class AndroidexService extends Service implements Constants{
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
                 RegisterModel model = new RegisterModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorBaseModel(model);
                 postEvent(EVENT_WHAT_REGISTER_RESULT,model);
             }
         });
@@ -502,11 +453,7 @@ public class AndroidexService extends Service implements Constants{
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
                 AccessModel model = new AccessModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorBaseModel(model);
                 postEvent(EVENT_WHAT_RECEVICE_ACCESS_RESULT,model);
             }
         });
@@ -526,11 +473,7 @@ public class AndroidexService extends Service implements Constants{
                 super.onFailure(statusCode, request, e);
                 showL("创建临时密码失败");
                 CreateTempKeyModel model = new CreateTempKeyModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorBaseModel(model);
                 postEvent(EVENT_WHAT_CREATE_TEMPKEY_RESULT,model);
             }
         });
@@ -548,11 +491,7 @@ public class AndroidexService extends Service implements Constants{
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
                 TempKeyModel model = new TempKeyModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorBaseModel(model);
                 postEvent(EVENT_WHAT_TEMPKEY_RESULT,model);
             }
         });
@@ -601,11 +540,7 @@ public class AndroidexService extends Service implements Constants{
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
                 UpdateModel model = new UpdateModel();
-                if(Utils.isNetworkAvailable()){
-                    model.code = SERVER_ERROR;
-                }else{
-                    model.code = NETWORK_ERROR;
-                }
+                errorBaseModel(model);
                 postEvent(EVENT_WHAT_UPDATE_PASSWORD_CALLBACK); //发布修改结果
             }
         });
@@ -630,5 +565,21 @@ public class AndroidexService extends Service implements Constants{
                 Utils.showCustomToast(AndroidexService.this,type,msg);
             }
         });
+    }
+
+    private void errorBaseModel(BaseBean bean){
+        if(Utils.isNetworkAvailable()){
+            bean.code = SERVER_ERROR;
+        }else{
+            bean.code = NETWORK_ERROR;
+        }
+    }
+
+    private void errorApplyModel(BaseApplyModel bean){
+        if(Utils.isNetworkAvailable()){
+            bean.code = SERVER_ERROR;
+        }else{
+            bean.code = NETWORK_ERROR;
+        }
     }
 }

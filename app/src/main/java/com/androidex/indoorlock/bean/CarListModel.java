@@ -1,13 +1,14 @@
 package com.androidex.indoorlock.bean;
 
+import com.androidex.indoorlock.base.BaseBean;
+
 import java.util.List;
 
 /**
  * Created by Administrator on 2018/3/13.
  */
 
-public class CarListModel {
-    public int code;
+public class CarListModel extends BaseBean {
     public List<Car> cars;
     public class Car{
         public int rid;

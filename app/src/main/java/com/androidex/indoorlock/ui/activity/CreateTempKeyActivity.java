@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.androidex.indoorlock.R;
 import com.androidex.indoorlock.base.BaseActivity;
+import com.androidex.indoorlock.bean.CreateTempKeyModel;
 import com.androidex.indoorlock.bean.Event;
 import com.androidex.indoorlock.bean.SignModel;
 import com.androidex.indoorlock.utils.SharedPreTool;
@@ -129,9 +130,20 @@ public class CreateTempKeyActivity extends BaseActivity {
     @Override
     public void onEvent(Event event) {
         if(event.what == EVENT_WHAT_CREATE_TEMPKEY_RESULT){
-            showL("收到创建密码回调");
             hideLoadingDialog();
-            this.finish();
+            CreateTempKeyModel model = (CreateTempKeyModel) event.msg;
+            if(model!=null){
+                if(model.code == 0){
+                    showToast(true,"创建成功");
+                    this.finish();
+                }else if(model.code == NETWORK_ERROR){
+                    showToast(false,"请检查网络");
+                }else if(model.code ==SERVER_ERROR){
+                    showToast(false,"服务器异常");
+                }
+            }else{
+                showToast(false,"密码创建失败");
+            }
         }
     }
 

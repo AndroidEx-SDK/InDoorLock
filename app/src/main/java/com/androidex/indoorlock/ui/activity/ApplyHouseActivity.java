@@ -237,7 +237,11 @@ public class ApplyHouseActivity extends BaseActivity {
                     }
                     selectCity();
                 }else{
-                    showToast(false,"城市信息获取失败，请重试");
+                    if(cityModel.code == NETWORK_ERROR){
+                        showToast(false,"请检查网络");
+                    }else if(cityModel.code == SERVER_ERROR){
+                        showToast(false,"服务器异常");
+                    }
                 }
                 break;
             case EVENT_WHAT_RECEVICE_COMMUNITY_RESULT:
@@ -252,7 +256,11 @@ public class ApplyHouseActivity extends BaseActivity {
                     }
                     selectCommunity();
                 }else{
-                    showToast(false,"小区信息获取失败，请重试");
+                    if(communtityModel.code == NETWORK_ERROR){
+                        showToast(false,"请检查网络");
+                    }else if(communtityModel.code == SERVER_ERROR){
+                        showToast(false,"服务器异常");
+                    }
                 }
                 break;
             case EVENT_WHAT_RECEVICE_BLOCK_RESULT:
@@ -271,7 +279,11 @@ public class ApplyHouseActivity extends BaseActivity {
                     }
                     selectBlock();
                 }else{
-                    showToast(false,"楼栋信息获取失败，请重试");
+                    if(blockModel.code == NETWORK_ERROR){
+                        showToast(false,"请检查网络");
+                    }else if(blockModel.code == SERVER_ERROR){
+                        showToast(false,"服务器异常");
+                    }
                 }
                 break;
             case EVENT_WHAT_RECEVICE_UNIT_RESULT:
@@ -283,6 +295,12 @@ public class ApplyHouseActivity extends BaseActivity {
                         unitData[i] = unitModel.data.get(i).unitName;
                     }
                     selectUnit();
+                }else{
+                    if(unitModel.code == NETWORK_ERROR){
+                        showToast(false,"请检查网络");
+                    }else if(unitModel.code == SERVER_ERROR){
+                        showToast(false,"服务器异常");
+                    }
                 }
                 break;
             case EVENT_WHAT_OWNER_RESULT:
@@ -297,6 +315,11 @@ public class ApplyHouseActivity extends BaseActivity {
                     ownerPhone.setText(ownerData[0]);
                 }else{
                     ownerPhone.setText("");
+                    if(ownerModel.code == NETWORK_ERROR){
+                        showToast(false,"请检查网络");
+                    }else if(ownerModel.code == SERVER_ERROR){
+                        showToast(false,"服务器异常");
+                    }
                 }
                 break;
             case EVENT_WHAT_APPLY_HOUSE_RESULT:

@@ -1,5 +1,7 @@
 package com.androidex.indoorlock.bean;
 
+import com.androidex.indoorlock.base.BaseBean;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -7,8 +9,7 @@ import java.util.List;
  * Created by Administrator on 2018/3/14.
  */
 
-public class AdviceListModel implements Serializable{
-    public int code;
+public class AdviceListModel extends BaseBean {
     public List<Advice> data;
     public class Advice implements Serializable{
         public int rid;
