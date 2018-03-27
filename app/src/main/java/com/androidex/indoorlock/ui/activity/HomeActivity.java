@@ -1,5 +1,6 @@
 package com.androidex.indoorlock.ui.activity;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
@@ -7,6 +8,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -47,6 +52,10 @@ public class HomeActivity extends BaseActivity {
 
     private int signoutmode = -1;
 
+    private LinearLayout notifyLayout;
+    private LinearLayout rtcloginLayout;
+    private ImageView refresh;
+
 
     @Override
     public void initParms(Bundle parms) {
@@ -74,8 +83,12 @@ public class HomeActivity extends BaseActivity {
         houseText = findViewById(R.id.home_house_text);
         rtcNotifyImage = findViewById(R.id.home_rtc_notify_image);
         rtcNotifyText = findViewById(R.id.home_rtc_notify_text);
-
-
+        notifyLayout = findViewById(R.id.rtc_login_layout);
+        notifyLayout.setVisibility(View.GONE);
+        rtcloginLayout = findViewById(R.id.rtc_login_layout);
+        rtcloginLayout.setVisibility(View.VISIBLE);
+        refresh = findViewById(R.id.refresh);
+        startRefreshAnimator();
         setHouseText(); //显示选定的房屋
         showPage(1); //默认显示第一页
     }
@@ -155,6 +168,16 @@ public class HomeActivity extends BaseActivity {
         postEvent(EVENT_WHAT_INITRTC);
     }
 
+    private void startRefreshAnimator(){
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.rotate);
+        showL("开始执行动画...");
+        refresh.startAnimation(animation);//开始动画
+    }
+
+    private void stopRefreshAnimator(){
+        refresh.clearAnimation();
+    }
+
     private void showPage(int page){
         FragmentTransaction ft = fragmentManager.beginTransaction();
         hideFragments(ft);
@@ -210,7 +233,7 @@ public class HomeActivity extends BaseActivity {
                 selfImage.setImageResource(R.mipmap.ic_self);
                 break;
             case 3:
-                managerImage.setImageResource(R.mipmap.ic_manager_focus);
+                managerImage.setImageResource(R.mipmap.ic_manager);
                 aroundImage.setImageResource(R.mipmap.ic_around);
                 selfImage.setImageResource(R.mipmap.ic_self_focus);
                 break;
@@ -230,26 +253,37 @@ public class HomeActivity extends BaseActivity {
         houseText.setText("请选择房屋");
     }
 
+    private boolean isShowState = true;
     private void setRtcNotify(int code){
+        notifyLayout.setVisibility(View.VISIBLE);
+        rtcloginLayout.setVisibility(View.GONE);
+        stopRefreshAnimator();
         if(code == RTCTools.RTCListener.INIT_SUCCESS){
             rtcNotifyImage.setImageResource(R.mipmap.ic_available);
             rtcNotifyText.setText("可视对讲上线成功");
-            showToast(true,"可视对讲上线成功");
+            if(isShowState){
+                isShowState = false;
+                showToast(true,"可视对讲上线成功");
+            }
         }else if(code == RTCTools.RTCListener.INIT_NOSIGN){
+            isShowState = true;
             rtcNotifyImage.setImageResource(R.mipmap.ic_unavailable);
             rtcNotifyText.setText("可视对讲上线失败，请重新登录");
             showToast(false,"可视对讲上线失败，请重新登录");
         }else if(code == RTCTools.RTCListener.INIT_TIMEERROR){
             rtcNotifyImage.setImageResource(R.mipmap.ic_unavailable);
             rtcNotifyText.setText("系统时间错误，可视对讲无法使用");
+            isShowState = true;
             showToast(false,"系统时间错误，可视对讲无法使用");
         }else if(code == RTCTools.RTCListener.INIT_NONETWORK){
             rtcNotifyImage.setImageResource(R.mipmap.ic_unavailable);
             rtcNotifyText.setText("无网络连接，可视对讲无法使用");
+            isShowState = true;
             showToast(false,"无网络连接，可视对讲无法使用");
         }else if(code == RTCTools.RTCListener.INIT_RELOGINERROR){
             rtcNotifyImage.setImageResource(R.mipmap.ic_unavailable);
             rtcNotifyText.setText("可视对讲注册失败，请手动重新登录");
+            isShowState = true;
             showToast(false,"可视对讲注册失败，请尝试手动登录");
         }
     }

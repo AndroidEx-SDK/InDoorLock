@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.androidex.indoorlock">
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
@@ -20,7 +20,7 @@
         tools:replace="name"
         android:name=".AndroidexApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_dyzn_icon"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -64,6 +64,21 @@
         <activity android:name=".ui.activity.TroubleDetailsActivity"></activity>
         <activity android:name=".ui.activity.TroubleCreateActivity"></activity>
         <activity android:name=".ui.activity.BillActivity"></activity>
+        <receiver android:name="eu.chainfire.supersu.NativeAccessReceiver">
+            <!-- 安装广播 -->
+            <intent-filter>
+                <data android:scheme="package"/>
+                <action android:name="android.intent.action.PACKAGE_REPLACED"/>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+            </intent-filter>
+
+            <!-- 开机广播 -->
+            <intent-filter >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

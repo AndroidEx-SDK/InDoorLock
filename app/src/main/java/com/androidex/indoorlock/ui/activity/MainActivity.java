@@ -1,8 +1,5 @@
 package com.androidex.indoorlock.ui.activity;
-
-import android.content.Intent;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
@@ -14,11 +11,13 @@ import com.androidex.indoorlock.service.AndroidexService;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.Date;
+
 public class MainActivity extends BaseActivity {
     private int flag = -1;
     @Override
     public void initParms(Bundle parms) {
-
+        showL("启动室内机"+new Date().getTime());
     }
 
     @Override

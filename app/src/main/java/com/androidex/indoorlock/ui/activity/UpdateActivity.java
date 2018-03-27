@@ -50,6 +50,7 @@ public class UpdateActivity extends BaseActivity {
         backLayout = findViewById(R.id.back);
         backLayout.setOnClickListener(this);
         title = findViewById(R.id.title);
+        title.setText("修改密码");
         oldPassword = findViewById(R.id.old_password);
         oldPassword.addTextChangedListener(new TextWatcher() {
             @Override
