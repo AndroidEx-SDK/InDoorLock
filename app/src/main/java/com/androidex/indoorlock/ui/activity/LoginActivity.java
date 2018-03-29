@@ -1,5 +1,6 @@
 package com.androidex.indoorlock.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
@@ -14,8 +15,8 @@ import com.androidex.indoorlock.bean.Event;
 import com.androidex.indoorlock.bean.SignModel;
 import com.androidex.indoorlock.service.AndroidexService;
 import com.androidex.indoorlock.utils.SharedPreTool;
-import com.androidex.indoorlock.utils.Utils;
 import com.androidex.indoorlock.view.MessageAlert;
+import com.pureman.dysmart.OtherThirdLoginActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +26,7 @@ import java.util.Map;
  */
 
 public class LoginActivity extends BaseActivity {
+
     private LinearLayout backLayout;
     private TextView titleBar;
     private EditText phoneEdittext, passwordEdittext;
@@ -69,6 +71,13 @@ public class LoginActivity extends BaseActivity {
         registerButton = findViewById(R.id.sign_in_button_register);
         loginButton.setOnClickListener(this);
         registerButton.setOnClickListener(this);
+
+        findViewById(R.id.iv_qq_login).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityForResult(new Intent(LoginActivity.this, OtherThirdLoginActivity.class), 0x1000);
+            }
+        });
     }
 
     @Override
@@ -148,5 +157,15 @@ public class LoginActivity extends BaseActivity {
         data.put("deviceUuid", SharedPreTool.getUUID());
         postEvent(EVENT_WHAT_SERVICE_LOGIN, data);
         showLoading("正在登录....");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0x1000 && resultCode == RESULT_OK) {
+            showToast(true, "登录成功");
+            startActivity(HomeActivity.class, null);
+            this.finish();
+        }
     }
 }

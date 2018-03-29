@@ -4,20 +4,25 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 
+import com.androidex.indoorlock.R;
 import com.androidex.indoorlock.bean.Event;
 import com.androidex.indoorlock.bean.SignModel;
 import com.androidex.indoorlock.utils.Constants;
 import com.androidex.indoorlock.utils.SharedPreTool;
 import com.androidex.indoorlock.utils.Utils;
+import com.pureman.dysmart.widget.LoadingDialog;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -168,5 +173,24 @@ public abstract class BaseActivity extends AppCompatActivity implements Constant
     @Override
     public void onBackPressed() {
 
+    }
+
+    private LoadingDialog loadingDialog;
+
+    public void showLoadingDialog(String message) {
+        if (loadingDialog == null) {
+            if (TextUtils.isEmpty(message)) {
+                loadingDialog = new LoadingDialog(this, false).setMessage(message);
+            } else {
+                loadingDialog = new LoadingDialog(this).setMessage(message);
+            }
+        }
+        loadingDialog.show();
+    }
+
+    public void hideLoadingDialog1() {
+        if (null != loadingDialog) {
+            loadingDialog.dismiss();
+        }
     }
 }

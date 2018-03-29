@@ -9,7 +9,7 @@
     </style>
 
     <style name="image_dialog" parent="@android:style/Theme.Dialog">
-        <!--     <item name="android:windowBackground">@android:color/transparent</item>-->
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
     <style name="Dialog" parent="android:style/Theme.Dialog">
@@ -26,4 +26,17 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <style name="MyTheme.NoTitleBar.CustomBackground1" parent="AppTheme">
+        <item name="android:windowBackground">@mipmap/ic_logo_phone</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="MyTheme.NoTitleBar.CustomBackground2" parent="AppTheme">
+        <item name="android:windowBackground">@mipmap/ic_logo</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 </resources>

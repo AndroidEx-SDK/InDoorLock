@@ -1,16 +1,18 @@
 package com.androidex.indoorlock.ui.activity;
 
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.androidex.indoorlock.R;
 import com.androidex.indoorlock.base.BaseActivity;
 import com.androidex.indoorlock.bean.Event;
 import com.androidex.indoorlock.bean.SignModel;
 import com.androidex.indoorlock.service.AndroidexService;
-import com.pureman.dysmart.TestHelper;
+import com.pureman.dysmart.*;
 
 import java.util.Date;
 
@@ -24,6 +26,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public int bindView() {
+        getWindow().setFormat(PixelFormat.RGBA_8888);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DITHER);
         return R.layout.activity_main;
     }
 
@@ -48,6 +52,8 @@ public class MainActivity extends BaseActivity {
                 } else {
                     showL("登录失败，跳转到Login");
                     startActivity(LoginActivity.class, null); //LoginActivity
+//                    startActivity(ThirdLoginActivity.class, null); //LoginActivity
+//                    startActivity(com.pureman.dysmart.LoginActivity.class, null); //LoginActivity
                 }
                 this.finish();
                 break;

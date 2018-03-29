@@ -76,18 +76,20 @@ public class SelfFragment extends BaseFragment {
         helpLayout.setOnClickListener(this);
 
         centerHeadIcon = findViewById(R.id.center_user_icon);
-        Glide.with(this).load(model.user.headimgurl).into(new SimpleTarget<GlideDrawable>() {
-            @Override
-            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                centerHeadIcon.setImageDrawable(resource);
-            }
+        if (model != null) {
+            Glide.with(this).load(model.user.headimgurl).into(new SimpleTarget<GlideDrawable>() {
+                @Override
+                public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                    centerHeadIcon.setImageDrawable(resource);
+                }
 
-            @Override
-            public void onLoadFailed(Exception e, Drawable errorDrawable) {
-                super.onLoadFailed(e, errorDrawable);
-                centerHeadIcon.setImageResource(R.mipmap.ic_gg);
-            }
-        });
+                @Override
+                public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                    super.onLoadFailed(e, errorDrawable);
+                    centerHeadIcon.setImageResource(R.mipmap.ic_gg);
+                }
+            });
+        }
     }
 
     @Override
