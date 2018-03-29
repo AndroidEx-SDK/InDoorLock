@@ -79,9 +79,9 @@ public class ManagerFragment extends BaseFragment {
                     case 10: //社区论坛
                         break;
                     case 11: //家庭电话
-                        if (getResources().getConfiguration().smallestScreenWidthDp < 600) {
-                            startActivity(HomeActivity.class, null);
-                        }
+                        break;
+                    case 12: //智能控制
+                        startActivity(HomeActivity.class, null);
                         break;
                 }
             }

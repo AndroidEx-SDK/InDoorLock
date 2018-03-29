@@ -1,59 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    >
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
 
-    <include
-        layout="@layout/activity_titlebar"></include>
+    <include layout="@layout/activity_titlebar" />
 
-    <LinearLayout
-        android:orientation="vertical"
+    <EditText
+        android:id="@+id/old_password"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <EditText
-            android:id="@+id/old_password"
-            android:layout_gravity="center_horizontal"
-            android:hint="请输入原密码"
-            android:inputType="textPassword"
-            android:layout_width="500dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/x24"
+        android:layout_marginRight="@dimen/x24"
+        android:layout_marginTop="@dimen/x24"
+        android:hint="请输入旧密码"
+        android:inputType="textPassword" />
 
-            />
+    <EditText
+        android:id="@+id/new_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/x24"
+        android:layout_marginRight="@dimen/x24"
+        android:layout_marginTop="@dimen/x10"
+        android:hint="请输入新密码"
+        android:inputType="textPassword" />
 
-        <EditText
-            android:id="@+id/new_password"
-            android:layout_gravity="center_horizontal"
-            android:hint="请输入新密码"
-            android:inputType="textPassword"
-            android:layout_width="500dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="20dp"
-            />
+    <EditText
+        android:id="@+id/re_new_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/x24"
+        android:layout_marginRight="@dimen/x24"
+        android:layout_marginTop="@dimen/x10"
+        android:hint="请再次输入新密码"
+        android:inputType="textPassword" />
 
-        <EditText
-            android:id="@+id/re_new_password"
-            android:layout_gravity="center_horizontal"
-            android:hint="请确认密码"
-            android:inputType="textPassword"
-            android:layout_width="500dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="20dp"
-            />
-        <Button
-            android:id="@+id/confirm"
-            android:text="确认"
-            android:textSize="20sp"
-            android:textColor="#ffffff"
-            android:layout_gravity="center_horizontal"
-            android:background="@mipmap/ic_update_e"
-            android:layout_width="520dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="60dp"
-            />
-    </LinearLayout>
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/x24"
+        android:layout_marginRight="@dimen/x24"
+        android:layout_marginTop="@dimen/x32"
+        android:background="@mipmap/ic_update_e"
+        android:text="确认"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
 
 </LinearLayout>
