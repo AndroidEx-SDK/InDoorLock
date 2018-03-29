@@ -53,7 +53,7 @@ public class DoorLockActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.back:
                 this.finish();
                 break;
@@ -73,39 +73,39 @@ public class DoorLockActivity extends BaseActivity {
     @Override
     public void mainThread() {
         model = (SignModel) SharedPreTool.getObject(SharedPreTool.sign_model);
-        if(model!=null && model.data!=null && model.data.size()>0){
+        if (model != null && model.data != null && model.data.size() > 0) {
             lockLayout.setVisibility(View.VISIBLE);
             error.setVisibility(View.GONE);
-            listView.setAdapter(new HouseAdapter(this,model.data));
+            listView.setAdapter(new HouseAdapter(this, model.data));
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    try{
+                    try {
                         String key = model.lockList.get(i).lockKey;
                         int blockid = model.lockList.get(i).blockId;
                         String unitNo = "";
-                        for(int j=0;j<model.data.size();j++){
-                            if(blockid == model.data.get(j).blockId){
+                        for (int j = 0; j < model.data.size(); j++) {
+                            if (blockid == model.data.get(j).blockId) {
                                 unitNo = model.data.get(j).unitNo;
                                 break;
                             }
                         }
                         JSONObject j = new JSONObject();
-                        j.put("key",key);
-                        j.put("unitNo",unitNo);
-                        postEvent(EVENT_WHAT_OPEN_LOCK,j);
-                    }catch (Exception e){
+                        j.put("key", key);
+                        j.put("unitNo", unitNo);
+                        postEvent(EVENT_WHAT_OPEN_LOCK, j);
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
             });
-        }else{
+        } else {
             lockLayout.setVisibility(View.GONE);
             error.setVisibility(View.VISIBLE);
-            if(model.code == NETWORK_ERROR){
-                showToast(false,"请检查网络");
-            }else if(model.code ==SERVER_ERROR){
-                showToast(false,"服务器异常");
+            if (model.code == NETWORK_ERROR) {
+                showToast(false, "请检查网络");
+            } else if (model.code == SERVER_ERROR) {
+                showToast(false, "服务器异常");
             }
         }
     }

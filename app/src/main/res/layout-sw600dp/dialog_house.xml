@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="450dp"
+    android:layout_height="600dp"
+    android:background="@drawable/dialog_house_background"
+    >
+
+    <TextView
+        android:text="房屋选择"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:textColor="#ffffff"
+        android:background="@drawable/dialog_house_text_background"
+        android:layout_width="match_parent"
+        android:layout_height="70dp" />
+    <ListView
+        android:id="@+id/listview"
+        android:divider="#f2f2f2"
+        android:dividerHeight="1px"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+    <TextView
+        android:id="@+id/error"
+        android:visibility="gone"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:text="请 先 申 请 房 屋"
+        android:textColor="#666666"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

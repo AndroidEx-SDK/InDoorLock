@@ -21,7 +21,8 @@ import java.util.List;
 public class HouseAlertAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private List<SignModel.Data> data;
-    public HouseAlertAdapter(Context context, List<SignModel.Data> data){
+
+    public HouseAlertAdapter(Context context, List<SignModel.Data> data) {
         this.mInflater = LayoutInflater.from(context);
         this.data = data;
     }
@@ -53,9 +54,9 @@ public class HouseAlertAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        if(data.get(i).rid == SharedPreTool.getIntValue(SharedPreTool.house_rid)){
+        if (data.get(i).rid == SharedPreTool.getIntValue(SharedPreTool.house_rid)) {
             holder.image.setImageResource(R.mipmap.ic_key);
-        }else{
+        } else {
             holder.image.setImageDrawable(null);
         }
         holder.text.setText(data.get(i).unitName);

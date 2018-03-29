@@ -2,29 +2,30 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.androidex.indoorlock">
+
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"></uses-permission>
-    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
-    <uses-permission android:name="android.hardware.camera"></uses-permission>
-    <uses-permission android:name="android.hardware.camera.autofocus"></uses-permission>
-    <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.hardware.camera" />
+    <uses-permission android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        tools:replace="name"
         android:name=".AndroidexApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="name">
         <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,50 +33,58 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name="rtc.sdk.impl.SdkService" >
+
+        <service android:name="rtc.sdk.impl.SdkService">
             <intent-filter>
                 <action android:name="rtc.sdk.service" />
             </intent-filter>
         </service>
+
         <activity
-            android:configChanges="orientation|screenSize"
-            android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity" />
-        <service android:name=".service.AndroidexService"></service>
-        <activity android:name=".ui.activity.LoginActivity"></activity>
-        <activity android:name=".ui.activity.HomeActivity"></activity>
-        <activity android:name=".ui.activity.TelephoneActivity"></activity>
-        <activity android:name=".ui.activity.HelpActivity"></activity>
-        <activity android:name=".ui.activity.CouponActivity"></activity>
-        <activity android:name=".ui.activity.UpdateActivity"></activity>
-        <activity android:name=".ui.activity.HouseActivity"></activity>
-        <activity android:name=".ui.activity.DoorLockActivity"></activity>
-        <activity android:name=".ui.activity.TempKeyActivity"></activity>
-        <activity android:name=".ui.activity.CreateTempKeyActivity"></activity>
-        <activity android:name=".ui.activity.AccessActivity"></activity>
-        <activity android:name=".ui.activity.RegisterActivity"></activity>
-        <activity android:name=".ui.activity.HouseDetailsActivity"></activity>
-        <activity android:name=".ui.activity.ApplyHouseActivity"></activity>
-        <activity android:name=".ui.activity.CarDetailsActivity"></activity>
-        <activity android:name=".ui.activity.CarApplyActivity"></activity>
-        <activity android:name=".ui.activity.AdviceActivity"></activity>
-        <activity android:name=".ui.activity.AdviceDetailsActivity"></activity>
-        <activity android:name=".ui.activity.ContactPropertyActivity"></activity>
-        <activity android:name=".ui.activity.TroubleActivity"></activity>
-        <activity android:name=".ui.activity.TroubleDetailsActivity"></activity>
-        <activity android:name=".ui.activity.TroubleCreateActivity"></activity>
-        <activity android:name=".ui.activity.BillActivity"></activity>
+            android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity"
+            android:configChanges="orientation|screenSize" />
+
+        <service android:name=".service.AndroidexService" />
+
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity android:name=".ui.activity.HomeActivity" />
+        <activity android:name=".ui.activity.TelephoneActivity" />
+        <activity android:name=".ui.activity.HelpActivity" />
+        <activity android:name=".ui.activity.CouponActivity" />
+        <activity android:name=".ui.activity.UpdateActivity" />
+        <activity android:name=".ui.activity.HouseActivity" />
+        <activity android:name=".ui.activity.DoorLockActivity" />
+        <activity android:name=".ui.activity.TempKeyActivity" />
+        <activity android:name=".ui.activity.CreateTempKeyActivity" />
+        <activity android:name=".ui.activity.AccessActivity" />
+        <activity android:name=".ui.activity.RegisterActivity" />
+        <activity android:name=".ui.activity.HouseDetailsActivity" />
+        <activity android:name=".ui.activity.ApplyHouseActivity" />
+        <activity android:name=".ui.activity.CarDetailsActivity" />
+        <activity android:name=".ui.activity.CarApplyActivity" />
+        <activity android:name=".ui.activity.AdviceActivity" />
+        <activity android:name=".ui.activity.AdviceDetailsActivity" />
+        <activity android:name=".ui.activity.ContactPropertyActivity" />
+        <activity android:name=".ui.activity.TroubleActivity" />
+        <activity android:name=".ui.activity.TroubleDetailsActivity" />
+        <activity android:name=".ui.activity.TroubleCreateActivity" />
+        <activity android:name=".ui.activity.BillActivity" />
+
         <receiver android:name="eu.chainfire.supersu.NativeAccessReceiver">
+
             <!-- 安装广播 -->
             <intent-filter>
-                <data android:scheme="package"/>
-                <action android:name="android.intent.action.PACKAGE_REPLACED"/>
+                <data android:scheme="package" />
+
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
             </intent-filter>
 
             <!-- 开机广播 -->
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+
                 <category android:name="android.intent.category.HOME" />
             </intent-filter>
         </receiver>

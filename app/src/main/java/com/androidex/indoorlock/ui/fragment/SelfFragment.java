@@ -25,7 +25,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
  * Created by Administrator on 2018/2/28.
  */
 
-public class SelfFragment extends BaseFragment{
+public class SelfFragment extends BaseFragment {
     private TextView nameText;
     private TextView mobileText;
     private LinearLayout couponLayout;
@@ -49,7 +49,7 @@ public class SelfFragment extends BaseFragment{
         nameText = findViewById(R.id.self_nickname);
         mobileText = findViewById(R.id.self_mobile);
         SignModel model = (SignModel) SharedPreTool.getObject(SharedPreTool.sign_model);
-        if(model !=null){
+        if (model != null) {
             nameText.setText(model.user.realname);
             mobileText.setText(model.user.mobile);
         }
@@ -92,21 +92,21 @@ public class SelfFragment extends BaseFragment{
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.self_photo:
-                Toast.makeText(mContext,"功能未开放",Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "功能未开放", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.self_house:
-                startActivity(HouseActivity.class,null);
+                startActivity(HouseActivity.class, null);
                 break;
             case R.id.self_updatepassword:
-                startActivity(UpdateActivity.class,null);
+                startActivity(UpdateActivity.class, null);
                 break;
             case R.id.self_coupon:
-                startActivity(CouponActivity.class,null);
+                startActivity(CouponActivity.class, null);
                 break;
             case R.id.self_signout:
-                if(messageAlert !=null){
+                if (messageAlert != null) {
                     messageAlert.dismiss();
                     messageAlert = null;
                 }
@@ -122,13 +122,13 @@ public class SelfFragment extends BaseFragment{
                         messageAlert.dismiss();
                         messageAlert = null;
                         showLoading("正在注销...");
-                        postEvent(EVENT_WHAT_SIGN_OUT,1);
+                        postEvent(EVENT_WHAT_SIGN_OUT, 1);
                     }
                 });
                 messageAlert.show();
                 break;
             case R.id.self_exit:
-                if(messageAlert !=null){
+                if (messageAlert != null) {
                     messageAlert.dismiss();
                     messageAlert = null;
                 }
@@ -150,7 +150,7 @@ public class SelfFragment extends BaseFragment{
                 messageAlert.show();
                 break;
             case R.id.self_help:
-                startActivity(HelpActivity.class,null);
+                startActivity(HelpActivity.class, null);
                 break;
         }
     }

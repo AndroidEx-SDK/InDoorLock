@@ -2,6 +2,8 @@ package com.androidex.indoorlock.base;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -25,10 +27,10 @@ import org.greenrobot.eventbus.ThreadMode;
  * Created by Administrator on 2018/2/26.
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements Constants,View.OnClickListener{
+public abstract class BaseActivity extends AppCompatActivity implements Constants, View.OnClickListener {
     private View v = null;
     private Dialog dialog;
-    protected Handler mHandler = new Handler(){
+    protected Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             onMessage(msg);
@@ -39,6 +41,11 @@ public abstract class BaseActivity extends AppCompatActivity implements Constant
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Configuration config = getResources().getConfiguration();
+        int smallestScreenWidth = config.smallestScreenWidthDp;
+        //横屏、竖屏
+        setRequestedOrientation(smallestScreenWidth >= 600 ? ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE : ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//横屏
+
         signModel = (SignModel) SharedPreTool.getObject(SharedPreTool.sign_model);
         initParms(getIntent().getExtras());
         getSupportActionBar().hide();
@@ -56,7 +63,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Constant
 
     @Override
     protected void onDestroy() {
-        if(dialog!=null){
+        if (dialog != null) {
             hideLoadingDialog();
             dialog = null;
         }
@@ -65,15 +72,20 @@ public abstract class BaseActivity extends AppCompatActivity implements Constant
     }
 
     public abstract void initParms(Bundle parms);
+
     public abstract int bindView();
+
     public abstract void initView(View v);
+
     public abstract void onMessage(Message msg);
+
     public abstract void onEvent(Event event);
+
     public abstract void mainThread();
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEventBusMessage(Event event){
-        if(event.what == EVENT_WHAT_TOP_ACCOUNT){
+    public void onEventBusMessage(Event event) {
+        if (event.what == EVENT_WHAT_TOP_ACCOUNT) {
             //被顶号了
             onTopAccount();
             return;
@@ -81,37 +93,37 @@ public abstract class BaseActivity extends AppCompatActivity implements Constant
         onEvent(event);
     }
 
-    protected void onTopAccount(){
+    protected void onTopAccount() {
         this.finish();
     }
 
-    private void onExit(){
+    private void onExit() {
         this.finish();
     }
 
-    public void postEvent(int what,Object obj){
-        EventBus.getDefault().post(new Event(what,obj));
+    public void postEvent(int what, Object obj) {
+        EventBus.getDefault().post(new Event(what, obj));
     }
 
-    public void postEvent(int what){
-        postEvent(what,null);
+    public void postEvent(int what) {
+        postEvent(what, null);
     }
 
-    public void unregisterEventBus(){
+    public void unregisterEventBus() {
         EventBus.getDefault().unregister(this);
     }
 
-    public void showLoading(String msg){
-        if(dialog == null){
-            dialog = Utils.createDialog(this,msg);
+    public void showLoading(String msg) {
+        if (dialog == null) {
+            dialog = Utils.createDialog(this, msg);
         }
-        if(dialog!=null && !dialog.isShowing()){
+        if (dialog != null && !dialog.isShowing()) {
             dialog.show();
         }
     }
 
-    public void hideLoadingDialog(){
-        if(dialog!=null && dialog.isShowing()){
+    public void hideLoadingDialog() {
+        if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
             dialog = null;
         }
@@ -126,29 +138,29 @@ public abstract class BaseActivity extends AppCompatActivity implements Constant
         startActivity(intent);
     }
 
-    public void startService(Class<?> clz){
-        Intent intent = new Intent(this,clz);
+    public void startService(Class<?> clz) {
+        Intent intent = new Intent(this, clz);
         startService(intent);
     }
 
-    public void stopService(Class<?> clz){
-        Intent intent = new Intent(this,clz);
+    public void stopService(Class<?> clz) {
+        Intent intent = new Intent(this, clz);
         stopService(intent);
     }
 
-    public boolean isNetWork(){
+    public boolean isNetWork() {
         return Utils.isNetworkAvailable();
     }
 
-    public void showL(String msg){
-        Log.e("xiao_",msg);
+    public void showL(String msg) {
+        Log.i("indoorlock", msg);
     }
 
-    public void showToast(final boolean type,final String msg){
+    public void showToast(final boolean type, final String msg) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Utils.showCustomToast(BaseActivity.this,type,msg);
+                Utils.showCustomToast(BaseActivity.this, type, msg);
             }
         });
     }

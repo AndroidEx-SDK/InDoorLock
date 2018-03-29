@@ -1,67 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/x10"
+    android:paddingTop="@dimen/x10">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/head"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_width="90dp"
-            android:layout_height="90dp" />
-        <LinearLayout
-            android:layout_marginLeft="20dp"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/name"
-                android:text="李勇"
-                android:textSize="20sp"
-                android:textColor="#000000"
-                android:layout_marginTop="30dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/title"
-                android:textSize="16sp"
-                android:maxLines="1"
-                android:maxEms="11"
-                android:ellipsize="end"
-                android:textColor="#999999"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </LinearLayout>
-    <RelativeLayout
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/state"
-            android:layout_marginTop="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:padding="5dp"
-            android:textColor="#ffffff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/time"
-            android:layout_below="@+id/state"
-            android:textColor="#999999"
-            android:textSize="18sp"
-            android:layout_marginTop="10dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
-</LinearLayout>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/head"
+        android:layout_width="@dimen/x64"
+        android:layout_height="@dimen/x64"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x10" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/head"
+        android:layout_marginLeft="@dimen/x8"
+        android:layout_toRightOf="@+id/head"
+        android:text="李勇"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/name"
+        android:layout_marginTop="@dimen/x5"
+        android:ellipsize="end"
+        android:maxEms="11"
+        android:maxLines="1"
+        android:textColor="#999999"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="@dimen/x5"
+        android:ellipsize="end"
+        android:maxEms="11"
+        android:maxLines="1"
+        android:textColor="#999999"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/x16"
+        android:padding="@dimen/x5"
+        android:textColor="#ffffff" />
+</RelativeLayout>
