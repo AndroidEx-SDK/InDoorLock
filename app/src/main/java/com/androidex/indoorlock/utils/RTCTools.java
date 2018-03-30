@@ -109,7 +109,7 @@ public class RTCTools implements Constants {
     }
 
     @Subscribe
-    public void OnEvent(Event event){
+    public void onEvent(Event event){
         switch (event.what){
             case EVENT_WHAT_OPEN_DOOR:
                 openDoor();

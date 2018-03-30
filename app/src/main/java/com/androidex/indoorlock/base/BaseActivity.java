@@ -2,6 +2,8 @@ package com.androidex.indoorlock.base;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,12 +12,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 
+import com.androidex.indoorlock.R;
 import com.androidex.indoorlock.bean.Event;
 import com.androidex.indoorlock.bean.SignModel;
 import com.androidex.indoorlock.utils.Constants;
 import com.androidex.indoorlock.utils.SharedPreTool;
 import com.androidex.indoorlock.utils.Utils;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -42,6 +50,9 @@ public abstract class BaseActivity extends AppCompatActivity implements Constant
         signModel = (SignModel) SharedPreTool.getObject(SharedPreTool.sign_model);
         initParms(getIntent().getExtras());
         getSupportActionBar().hide();
+        if(this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
         v = LayoutInflater.from(this).inflate(bindView(), null);
         setContentView(v);
         initView(v);
@@ -149,6 +160,24 @@ public abstract class BaseActivity extends AppCompatActivity implements Constant
             @Override
             public void run() {
                 Utils.showCustomToast(BaseActivity.this,type,msg);
+            }
+        });
+    }
+
+    protected void loadUrlImage(String url,final ImageView image){
+        Glide.with(this).load(url).placeholder(R.mipmap.ic_error).error(R.mipmap.ic_error).into(new SimpleTarget<GlideDrawable>() {
+            @Override
+            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                image.setImageDrawable(resource);
+            }
+        });
+    }
+
+    protected void loadUrlImage(int rid,final ImageView image){
+        Glide.with(this).load(rid).placeholder(R.mipmap.ic_error).error(R.mipmap.ic_error).into(new SimpleTarget<GlideDrawable>() {
+            @Override
+            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                image.setImageDrawable(resource);
             }
         });
     }

@@ -9,8 +9,6 @@ import com.androidex.indoorlock.bean.Event;
 import com.androidex.indoorlock.bean.SignModel;
 import com.androidex.indoorlock.service.AndroidexService;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.Date;
 
 public class MainActivity extends BaseActivity {

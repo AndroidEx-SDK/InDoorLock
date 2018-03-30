@@ -13,6 +13,7 @@ import com.androidex.indoorlock.base.BaseBean;
 import com.androidex.indoorlock.bean.AccessModel;
 import com.androidex.indoorlock.bean.AdviceListModel;
 import com.androidex.indoorlock.bean.ApplyHouseModel;
+import com.androidex.indoorlock.bean.AroundListModel;
 import com.androidex.indoorlock.bean.BaseApplyModel;
 import com.androidex.indoorlock.bean.BlockListModel;
 import com.androidex.indoorlock.bean.CarApplyModel;
@@ -25,16 +26,16 @@ import com.androidex.indoorlock.bean.HouseDetailModel;
 import com.androidex.indoorlock.bean.OwnerListModel;
 import com.androidex.indoorlock.bean.PropertyDataModel;
 import com.androidex.indoorlock.bean.RegisterModel;
+import com.androidex.indoorlock.bean.ShopListModel;
+import com.androidex.indoorlock.bean.ShopTypeModel;
 import com.androidex.indoorlock.bean.SignModel;
 import com.androidex.indoorlock.bean.TempKeyModel;
 import com.androidex.indoorlock.bean.TroubleListModel;
 import com.androidex.indoorlock.bean.UnitListModel;
 import com.androidex.indoorlock.bean.UpdateModel;
 import com.androidex.indoorlock.net.NetApi;
-import com.androidex.indoorlock.net.base.BaseModel;
 import com.androidex.indoorlock.net.base.FileUploadModel;
 import com.androidex.indoorlock.net.base.ResultCallBack;
-import com.androidex.indoorlock.ui.activity.LoginActivity;
 import com.androidex.indoorlock.utils.Constants;
 import com.androidex.indoorlock.utils.RTCTools;
 import com.androidex.indoorlock.utils.SharedPreTool;
@@ -170,6 +171,15 @@ public class AndroidexService extends Service implements Constants{
             case EVENT_WHAT_UPLOAD_IMAGE:{
                 uploadPhoto((File) event.msg);
             }break;
+            case EVENT_WHAT_AROUND:{
+                getAround((Map<String, String>) event.msg);
+            }break;
+            case EVENT_WHAT_SHOPTYPE:{
+                getShopType((Map<String, String>) event.msg);
+            }break;
+            case EVENT_WHAT_SHOPLIST:{
+                getShopList((Map<String, String>) event.msg);
+            }break;
         }
     }
 
@@ -181,6 +191,60 @@ public class AndroidexService extends Service implements Constants{
         showL("service 注销完成");
         postEvent(EVENT_WHAT_SIGN_OUT_CALLBACK);
         super.onDestroy();
+    }
+
+    private void getShopList(Map<String,String> data){
+        NetApi.getShopList(data,new ResultCallBack<ShopListModel>(){
+            @Override
+            public void onSuccess(int statusCode, Headers headers, ShopListModel model) {
+                super.onSuccess(statusCode, headers, model);
+                postEvent(EVENT_WHAT_SHOPLIST_RESULT,model);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Request request, Exception e) {
+                super.onFailure(statusCode, request, e);
+                ShopListModel model = new ShopListModel();
+                errorBaseModel(model);
+                postEvent(EVENT_WHAT_SHOPLIST_RESULT,model);
+            }
+        });
+    }
+
+    private void getShopType(Map<String,String> data){
+        NetApi.getShopType(data,new ResultCallBack<ShopTypeModel>(){
+            @Override
+            public void onSuccess(int statusCode, Headers headers, ShopTypeModel model) {
+                super.onSuccess(statusCode, headers, model);
+                postEvent(EVENT_WHAT_SHOPTYPE_RESULT,model);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Request request, Exception e) {
+                super.onFailure(statusCode, request, e);
+                ShopTypeModel model = new ShopTypeModel();
+                errorBaseModel(model);
+                postEvent(EVENT_WHAT_SHOPTYPE_RESULT,model);
+            }
+        });
+    }
+
+    private void getAround(Map<String,String> data){
+        NetApi.getAround(data,new ResultCallBack<AroundListModel>(){
+            @Override
+            public void onSuccess(int statusCode, Headers headers, AroundListModel model) {
+                super.onSuccess(statusCode, headers, model);
+                postEvent(EVENT_WHAT_AROUND_RESULT,model);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Request request, Exception e) {
+                super.onFailure(statusCode, request, e);
+                AroundListModel model = new AroundListModel();
+                errorBaseModel(model);
+                postEvent(EVENT_WHAT_AROUND_RESULT,model);
+            }
+        });
     }
 
     private void uploadPhoto(File file){

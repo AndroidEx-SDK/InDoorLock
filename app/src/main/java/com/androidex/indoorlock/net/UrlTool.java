@@ -32,4 +32,7 @@ public abstract class UrlTool {
     public static final String RECEVICE_PROPERTY = "/app/unit/retrieveContactList";
     public static final String RECEVICE_TROUBLE = "/app/trouble/retrieveTroubleList";
     public static final String UP_LOAD_IMAGE = "/app/upload/image";
+    public static final String RECEVICE_AROUND = "/app/shop/retrieveShopList";
+    public static final String RECEVICE_SHOPTYPE = "/app/shop/retrieveCategoryList";
+    public static final String RECEVICE_SHOPLIST = "/app/shop/retrieveGoodsList";
 }

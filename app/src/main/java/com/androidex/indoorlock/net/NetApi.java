@@ -1,11 +1,9 @@
 package com.androidex.indoorlock.net;
 
-import android.util.Log;
-
-import com.alibaba.fastjson.JSON;
 import com.androidex.indoorlock.bean.AccessModel;
 import com.androidex.indoorlock.bean.AdviceListModel;
 import com.androidex.indoorlock.bean.ApplyHouseModel;
+import com.androidex.indoorlock.bean.AroundListModel;
 import com.androidex.indoorlock.bean.BlockListModel;
 import com.androidex.indoorlock.bean.CarApplyModel;
 import com.androidex.indoorlock.bean.CarListModel;
@@ -16,6 +14,8 @@ import com.androidex.indoorlock.bean.HouseDetailModel;
 import com.androidex.indoorlock.bean.OwnerListModel;
 import com.androidex.indoorlock.bean.PropertyDataModel;
 import com.androidex.indoorlock.bean.RegisterModel;
+import com.androidex.indoorlock.bean.ShopListModel;
+import com.androidex.indoorlock.bean.ShopTypeModel;
 import com.androidex.indoorlock.bean.SignModel;
 import com.androidex.indoorlock.bean.TempKeyModel;
 import com.androidex.indoorlock.bean.TroubleListModel;
@@ -248,6 +248,30 @@ public class NetApi extends UrlTool{
                 .put("_parts", file, RequestParams.MEDIA.JPG);
         String url = BASE_HEAD+UP_LOAD_IMAGE;
         new OkRequest.Builder().url(url).params(params).post(callBack);
+    }
+
+    public static void getAround(Map<String,String> data,ResultCallBack<AroundListModel> callBack){
+        RequestParams params = RequestParams.newInstance();
+        params.put("appKey", data.get("appKey"));
+        params.put("arrayLength",0);
+        String url = BASE_HEAD+RECEVICE_AROUND;
+        new OkRequest.Builder().url(url).headers(getHeaders(getToken(data))).params(params).get(callBack);
+    }
+
+    public static void getShopType(Map<String,String> data,ResultCallBack<ShopTypeModel> callBack){
+        RequestParams params = RequestParams.newInstance();
+        params.put("appKey", data.get("appKey"));
+        String url = BASE_HEAD+RECEVICE_SHOPTYPE;
+        new OkRequest.Builder().url(url).headers(getHeaders(getToken(data))).params(params).get(callBack);
+    }
+
+    public static void getShopList(Map<String,String> data,ResultCallBack<ShopListModel> callBack){
+        RequestParams params = RequestParams.newInstance();
+        params.put("appKey", data.get("appKey"));
+        params.put("shopId",Integer.valueOf(data.get("shopId")));
+        params.put("arrayLength",0);
+        String url = BASE_HEAD+RECEVICE_SHOPLIST;
+        new OkRequest.Builder().url(url).headers(getHeaders(getToken(data))).params(params).get(callBack);
     }
 
 

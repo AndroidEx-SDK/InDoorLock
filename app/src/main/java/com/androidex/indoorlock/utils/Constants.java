@@ -63,4 +63,10 @@ public interface Constants {
     int EVENT_WHAT_TROUBLE_RESULT = 53; //投诉建议回调
     int EVENT_WHAT_UPLOAD_IMAGE = 54;//文件上传
     int EVENT_WHAT_UPLOAD_IMAGE_RESULT = 55;//文件上传回调
+    int EVENT_WHAT_AROUND = 56; //周边数据
+    int EVENT_WHAT_AROUND_RESULT = 57;// 周边数据回调
+    int EVENT_WHAT_SHOPTYPE = 58; //商户类型
+    int EVENT_WHAT_SHOPTYPE_RESULT = 59;//商户类型回调
+    int EVENT_WHAT_SHOPLIST = 60;// 商户商品列表
+    int EVENT_WHAT_SHOPLIST_RESULT = 61; //商户商品列表回调
 }

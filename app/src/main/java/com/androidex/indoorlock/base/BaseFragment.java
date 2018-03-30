@@ -74,6 +74,11 @@ public abstract class BaseFragment extends Fragment implements Constants,View.On
         initData();
     }
 
+    @Override
+    public void onClick(View view) {
+
+    }
+
     protected void mainThread(){
 
     }
