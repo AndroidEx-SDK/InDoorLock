@@ -1,6 +1,5 @@
 package com.androidex.indoorlock.ui.fragment;
 
-import android.os.Message;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -14,13 +13,11 @@ import com.androidex.indoorlock.ui.activity.BillActivity;
 import com.androidex.indoorlock.ui.activity.CarDetailsActivity;
 import com.androidex.indoorlock.ui.activity.ContactPropertyActivity;
 import com.androidex.indoorlock.ui.activity.DoorLockActivity;
-import com.androidex.indoorlock.ui.activity.TempKeyActivity;
 import com.androidex.indoorlock.ui.activity.HouseActivity;
+import com.androidex.indoorlock.ui.activity.TempKeyActivity;
 import com.androidex.indoorlock.ui.activity.TroubleActivity;
 import com.androidex.indoorlock.utils.SharedPreTool;
 import com.pureman.dysmart.HomeActivity;
-
-import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by Administrator on 2018/2/28.
