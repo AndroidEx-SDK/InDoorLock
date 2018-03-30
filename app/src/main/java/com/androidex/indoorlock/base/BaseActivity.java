@@ -22,6 +22,8 @@ import com.androidex.indoorlock.bean.SignModel;
 import com.androidex.indoorlock.utils.Constants;
 import com.androidex.indoorlock.utils.SharedPreTool;
 import com.androidex.indoorlock.utils.Utils;
+import com.pureman.dysmart.SelectDeviceActivity;
+import com.pureman.dysmart.util.DeviceUtil;
 import com.pureman.dysmart.widget.LoadingDialog;
 
 import org.greenrobot.eventbus.EventBus;
@@ -46,10 +48,8 @@ public abstract class BaseActivity extends AppCompatActivity implements Constant
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Configuration config = getResources().getConfiguration();
-        int smallestScreenWidth = config.smallestScreenWidthDp;
         //横屏、竖屏
-        setRequestedOrientation(smallestScreenWidth >= 600 ? ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE : ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//横屏
+        setRequestedOrientation(DeviceUtil.isPad(this) ? ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE : ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//横屏
 
         signModel = (SignModel) SharedPreTool.getObject(SharedPreTool.sign_model);
         initParms(getIntent().getExtras());

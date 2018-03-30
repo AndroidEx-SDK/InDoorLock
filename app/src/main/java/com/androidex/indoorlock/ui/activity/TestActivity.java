@@ -8,16 +8,15 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 
 import com.androidex.indoorlock.R;
+import com.pureman.dysmart.util.DeviceUtil;
 
 public class TestActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Configuration config = getResources().getConfiguration();
-        int smallestScreenWidth = config.smallestScreenWidthDp;
         //横屏、竖屏
-        setRequestedOrientation(smallestScreenWidth >= 600 ? ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE : ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//横屏
+        setRequestedOrientation(DeviceUtil.isPad(this) ? ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE : ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//横屏
 
         DisplayMetrics dm = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -27,7 +26,7 @@ public class TestActivity extends AppCompatActivity {
         int densityDpi = dm.densityDpi;
         //1280/752/1.0/160/800 平板
         //1080/1920/3.0/480/360 手机
-        Log.i("indoorlock", "TestActivity/initView-->" + screenWidth + "/" + screenHeight + "/" + density + "/" + densityDpi + "/" + smallestScreenWidth);
+        Log.i("indoorlock", "TestActivity/initView-->" + screenWidth + "/" + screenHeight + "/" + density + "/" + densityDpi);
 
         setContentView(R.layout.activity_test);
     }
