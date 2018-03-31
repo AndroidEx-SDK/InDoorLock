@@ -34,7 +34,8 @@ public class UpdateActivity extends BaseActivity {
     private EditText newPassword;
     private EditText renewPassword;
     private Button confirm;
-    private String oldText = "",newText = "",renewText = "";
+    private String oldText = "", newText = "", renewText = "";
+
     @Override
     public void initParms(Bundle parms) {
 
@@ -56,9 +57,11 @@ public class UpdateActivity extends BaseActivity {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
                 oldText = editable.toString();
@@ -70,9 +73,11 @@ public class UpdateActivity extends BaseActivity {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
                 newText = editable.toString();
@@ -84,9 +89,11 @@ public class UpdateActivity extends BaseActivity {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
                 renewText = editable.toString();
@@ -99,9 +106,9 @@ public class UpdateActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.back){
+        if (view.getId() == R.id.back) {
             this.finish();
-        }else if(view.getId() == R.id.confirm){
+        } else if (view.getId() == R.id.confirm) {
             updatePassword();
         }
     }
@@ -113,15 +120,15 @@ public class UpdateActivity extends BaseActivity {
 
     @Override
     public void onEvent(Event event) {
-        switch (event.what){
+        switch (event.what) {
             case EVENT_WHAT_UPDATE_PASSWORD_CALLBACK:
                 hideLoadingDialog();
                 UpdateModel model = (UpdateModel) event.msg;
-                if(model.code == 0){
-                    showToast(true,"密码修改成功");
+                if (model.code == 0) {
+                    showToast(true, "密码修改成功");
                     this.finish();
-                }else if(model.code == 1){
-                    showToast(false,"原密码错误");
+                } else if (model.code == 1) {
+                    showToast(false, "原密码错误");
                 }
                 break;
         }
@@ -132,44 +139,44 @@ public class UpdateActivity extends BaseActivity {
 
     }
 
-    private void updatePassword(){
-        if(oldText == null || oldText.length()<6 || oldText.length()>12){
-            showToast(false,"请输入6至12位有效密码");
+    private void updatePassword() {
+        if (oldText == null || oldText.length() < 6 || oldText.length() > 12) {
+            showToast(false, "请输入6至12位有效密码");
             return;
         }
-        if(newText == null || newText.length()<6 || newText.length()>12){
-            showToast(false,"请输入6至12位有效密码");
+        if (newText == null || newText.length() < 6 || newText.length() > 12) {
+            showToast(false, "请输入6至12位有效密码");
             return;
         }
-        if(!newText.equals(renewText)){
-            showToast(false,"新密码两次输入不一致，请重新确认");
-           return;
+        if (!newText.equals(renewText)) {
+            showToast(false, "新密码两次输入不一致，请重新确认");
+            return;
         }
         SignModel model = (SignModel) SharedPreTool.getObject(SharedPreTool.sign_model);
-        if(model != null){
-            Map<String,String> data = new HashMap<String,String>();
-            data.put("rid",model.user.rid+"");
-            data.put("password",newText);
-            data.put("password1",oldText);
+        if (model != null) {
+            Map<String, String> data = new HashMap<String, String>();
+            data.put("rid", model.user.rid + "");
+            data.put("password", newText);
+            data.put("password1", oldText);
             data.put("appKey", Utils.getKey());
-            data.put("token",model.token);
-            postEvent(EVENT_WHAT_UPDATE_PASSWORD,data);
+            data.put("token", model.token);
+            postEvent(EVENT_WHAT_UPDATE_PASSWORD, data);
             showLoading("正在修改密码");
         }
 
 
     }
 
-    private void updateConfirm(){
-        if(oldText == null || oldText.length()<6 || oldText.length()>12){
+    private void updateConfirm() {
+        if (oldText == null || oldText.length() < 6 || oldText.length() > 12) {
             confirm.setBackgroundResource(R.mipmap.ic_update_e);
             return;
         }
-        if(newText == null || newText.length()<6 || newText.length()>12){
+        if (newText == null || newText.length() < 6 || newText.length() > 12) {
             confirm.setBackgroundResource(R.mipmap.ic_update_e);
             return;
         }
-        if(renewText == null || renewText.length()<6 || renewText.length()>12){
+        if (renewText == null || renewText.length() < 6 || renewText.length() > 12) {
             confirm.setBackgroundResource(R.mipmap.ic_update_e);
             return;
         }

@@ -1,144 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#42C1FC"
-    >
-    <include
-        layout="@layout/activity_titlebar"></include>
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_titlebar" />
+
+    <EditText
+        android:id="@+id/register_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x16"
+        android:layout_marginRight="@dimen/x16"
+        android:layout_marginTop="@dimen/x24"
+        android:drawableLeft="@mipmap/ic_name"
+        android:drawablePadding="@dimen/x10"
+        android:hint="请输入用户名"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/register_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x16"
+        android:layout_marginRight="@dimen/x16"
+        android:layout_marginTop="@dimen/x24"
+        android:drawableLeft="@mipmap/ic_phone"
+        android:drawablePadding="@dimen/x10"
+        android:hint="请输入手机号码"
+        android:inputType="number"
+        android:textSize="16sp" />
 
     <LinearLayout
-        android:layout_marginTop="@dimen/register_marginTop"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:layout_width="@dimen/register_width"
-        android:layout_height="@dimen/register_height">
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/ic_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:id="@+id/register_name"
-            android:hint="请输入账号"
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x16"
+        android:layout_marginRight="@dimen/x16"
+        android:layout_marginTop="@dimen/x24">
 
-    <LinearLayout
-        android:layout_marginTop="@dimen/register_marginTop"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:layout_width="@dimen/register_width"
-        android:layout_height="@dimen/register_height">
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/ic_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
         <EditText
+            android:id="@+id/register_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/ic_code"
+            android:drawablePadding="@dimen/x10"
+            android:hint="请输入验证码"
             android:inputType="number"
-            android:hint="请输入手机号码"
-            android:id="@+id/register_phone"
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            android:textSize="16sp" />
 
-    <RelativeLayout
-        android:layout_marginTop="@dimen/register_marginTop"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="@dimen/register_width"
-        android:layout_height="@dimen/register_height">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_vertical"
-                android:src="@mipmap/ic_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <EditText
-                android:id="@+id/register_code"
-                android:hint="请输入验证码"
-                android:layout_marginLeft="20dp"
-                android:layout_gravity="bottom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
         <TextView
             android:id="@+id/register_getcode"
-            android:layout_marginTop="33dp"
-            android:layout_marginRight="10dp"
-            android:textColor="#eeeeee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="获取验证码"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
-
-
-    <LinearLayout
-        android:layout_marginTop="@dimen/register_marginTop"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:layout_width="@dimen/register_width"
-        android:layout_height="@dimen/register_height">
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/ic_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:inputType="textPassword"
-            android:hint="请输入6-12位密码"
-            android:id="@+id/register_password"
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textColor="#eeeeee" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_marginTop="@dimen/register_marginTop"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:layout_width="@dimen/register_width"
-        android:layout_height="@dimen/register_height">
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/ic_repassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <EditText
-            android:inputType="textPassword"
-            android:hint="请确认密码"
-            android:id="@+id/register_repassword"
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+    <EditText
+        android:id="@+id/register_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x16"
+        android:layout_marginRight="@dimen/x16"
+        android:layout_marginTop="@dimen/x24"
+        android:drawableLeft="@mipmap/ic_password"
+        android:drawablePadding="@dimen/x10"
+        android:hint="请输入6-12位密码"
+        android:inputType="textPassword"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/register_repassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x16"
+        android:layout_marginRight="@dimen/x16"
+        android:layout_marginTop="@dimen/x24"
+        android:drawableLeft="@mipmap/ic_password"
+        android:drawablePadding="@dimen/x10"
+        android:hint="请再次输入密码"
+        android:inputType="textPassword"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/register_button"
-        android:textColor="#ffffff"
-        android:textSize="18sp"
-        android:text="注册"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x24"
+        android:layout_marginRight="@dimen/x24"
+        android:layout_marginTop="@dimen/x32"
         android:background="@mipmap/ic_register_button2"
-        android:layout_marginTop="@dimen/register_marginTop"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="@dimen/register_width"
-        android:layout_height="70dp" />
+        android:text="注 册"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
 
 </LinearLayout>

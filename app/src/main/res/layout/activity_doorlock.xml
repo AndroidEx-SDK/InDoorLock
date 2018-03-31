@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f2f2f2"
-    >
+    android:orientation="vertical">
 
-    <include
-        layout="@layout/activity_titlebar"></include>
+    <include layout="@layout/activity_titlebar" />
 
     <LinearLayout
-        android:visibility="gone"
         android:id="@+id/lock_layout"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
         <TextView
-            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10"
             android:gravity="center_vertical"
-            android:text="所有小区门禁"
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:paddingBottom="@dimen/x10"
+            android:paddingTop="@dimen/x10"
+            android:text="所有小区门禁" />
+
         <ListView
-            android:background="#ffffff"
             android:id="@+id/listview"
-            android:dividerHeight="1px"
-            android:divider="#dddddd"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></ListView>
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:divider="#dddddd"
+            android:dividerHeight="1px" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/error"
-        android:visibility="gone"
-        android:textSize="24sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f2f2f2"
         android:gravity="center"
         android:text="请先申请房屋"
         android:textColor="#666666"
-        android:background="#f2f2f2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:textSize="20sp"
+        android:visibility="gone" />
 
 </LinearLayout>

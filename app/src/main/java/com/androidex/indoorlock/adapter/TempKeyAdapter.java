@@ -21,7 +21,8 @@ import java.util.List;
 public class TempKeyAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private List<TempKeyModel.Data> data;
-    public TempKeyAdapter(Context context, List<TempKeyModel.Data> data){
+
+    public TempKeyAdapter(Context context, List<TempKeyModel.Data> data) {
         this.mInflater = LayoutInflater.from(context);
         this.data = data;
     }
@@ -43,7 +44,7 @@ public class TempKeyAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
-       ViewHolder holder = null;
+        ViewHolder holder = null;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.activity_tempkey_item, viewGroup, false); //加载布局
             holder = new ViewHolder();
@@ -55,10 +56,10 @@ public class TempKeyAdapter extends BaseAdapter {
         }
         String strLimit = "";
         int enterTime = data.get(i).enterTime;
-        if(enterTime!= -1){
-            strLimit = "可使用次数："+enterTime+"次";
-        }else{
-            strLimit = data.get(i).startDate+" 至 "+data.get(i).endDate;
+        if (enterTime != -1) {
+            strLimit = "可使用次数：" + enterTime + "次";
+        } else {
+            strLimit = data.get(i).startDate + " 至 " + data.get(i).endDate;
         }
         holder.tempkey.setText(data.get(i).tempkey);
         holder.limit.setText(strLimit);

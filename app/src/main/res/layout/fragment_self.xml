@@ -1,222 +1,247 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/center_user_icon"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="@dimen/x64"
+        android:layout_height="@dimen/x64"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/x10"
         android:src="@mipmap/ic_gg"
-        app:civ_border_width="1dp"
-        app:civ_border_color="#99cc00"/>
+        app:civ_border_color="#99cc00"
+        app:civ_border_width="1dp" />
+
     <TextView
         android:id="@+id/self_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:text="李萌萌" />
+        android:text="李萌萌"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
     <TextView
         android:id="@+id/self_mobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#999999"
-        android:textSize="18sp"
-        android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
-        android:text="15919749045" />
+        android:layout_marginTop="@dimen/x5"
+        android:text="15919749045"
+        android:textColor="#999999"
+        android:textSize="16sp" />
 
     <LinearLayout
-        android:layout_marginLeft="180dp"
-        android:layout_marginRight="180dp"
-        android:orientation="vertical"
+        android:id="@+id/self_coupon"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/x10"
+        android:paddingTop="@dimen/x10">
 
-        <LinearLayout
-            android:id="@+id/self_coupon"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/self_item_height">
-            <ImageView
-                android:src="@mipmap/ic_coupon"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="我的优惠券"
-                android:layout_marginLeft="@dimen/self_item_text_marginLeft"
-                android:textSize="16sp"
-                android:textColor="#000000"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x10"
+            android:src="@mipmap/ic_coupon" />
 
-        <View
-            android:background="#dddddd"
-            android:layout_width="match_parent"
-            android:layout_height="1px"></View>
-
-        <LinearLayout
-            android:id="@+id/self_house"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/self_item_height">
-            <ImageView
-                android:src="@mipmap/ic_house"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="我的房屋"
-                android:layout_marginLeft="@dimen/self_item_text_marginLeft"
-                android:textSize="16sp"
-                android:textColor="#000000"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <View
-            android:background="#dddddd"
-            android:layout_width="match_parent"
-            android:layout_height="1px"></View>
-
-
-        <LinearLayout
-            android:id="@+id/self_photo"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/self_item_height">
-            <ImageView
-                android:src="@mipmap/ic_photo"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="我的相框"
-                android:layout_marginLeft="@dimen/self_item_text_marginLeft"
-                android:textSize="16sp"
-                android:textColor="#000000"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <View
-            android:background="#dddddd"
-            android:layout_width="match_parent"
-            android:layout_height="1px"></View>
-
-        <LinearLayout
-            android:id="@+id/self_updatepassword"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/self_item_height">
-            <ImageView
-                android:src="@mipmap/ic_updatepassword"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="修改密码"
-                android:layout_marginLeft="@dimen/self_item_text_marginLeft"
-                android:textSize="16sp"
-                android:textColor="#000000"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <View
-            android:background="#dddddd"
-            android:layout_width="match_parent"
-            android:layout_height="1px"></View>
-
-        <LinearLayout
-            android:id="@+id/self_signout"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/self_item_height">
-            <ImageView
-                android:src="@mipmap/ic_signout"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="注销"
-                android:layout_marginLeft="@dimen/self_item_text_marginLeft"
-                android:textSize="16sp"
-                android:textColor="#000000"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <View
-            android:background="#dddddd"
-            android:layout_width="match_parent"
-            android:layout_height="1px"></View>
-
-        <LinearLayout
-            android:id="@+id/self_exit"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/self_item_height">
-            <ImageView
-                android:src="@mipmap/ic_exit"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="退出"
-                android:layout_marginLeft="@dimen/self_item_text_marginLeft"
-                android:textSize="16sp"
-                android:textColor="#000000"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <View
-            android:background="#dddddd"
-            android:layout_width="match_parent"
-            android:layout_height="1px"></View>
-
-
-        <LinearLayout
-            android:id="@+id/self_help"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/self_item_height">
-            <ImageView
-                android:src="@mipmap/ic_help"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="帮助"
-                android:layout_marginLeft="@dimen/self_item_text_marginLeft"
-                android:textSize="16sp"
-                android:textColor="#000000"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <View
-            android:background="#dddddd"
-            android:layout_width="match_parent"
-            android:layout_height="1px"></View>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x10"
+            android:text="我的优惠券"
+            android:textColor="#000000"
+            android:textSize="16sp" />
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray" />
+
+    <LinearLayout
+        android:id="@+id/self_house"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/x10"
+        android:paddingTop="@dimen/x10">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x10"
+            android:src="@mipmap/ic_house" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x10"
+            android:text="我的房屋"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray" />
+
+    <LinearLayout
+        android:id="@+id/self_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/x10"
+        android:paddingTop="@dimen/x10">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x10"
+            android:src="@mipmap/ic_photo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x10"
+            android:text="我的相框"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray" />
+
+    <LinearLayout
+        android:id="@+id/self_updatepassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/x10"
+        android:paddingTop="@dimen/x10">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x10"
+            android:src="@mipmap/ic_updatepassword" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x10"
+            android:text="修改密码"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray" />
+
+    <LinearLayout
+        android:id="@+id/self_signout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/x10"
+        android:paddingTop="@dimen/x10">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x10"
+            android:src="@mipmap/ic_signout" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x10"
+            android:text="注销"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray" />
+
+    <LinearLayout
+        android:id="@+id/self_exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/x10"
+        android:paddingTop="@dimen/x10">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x10"
+            android:src="@mipmap/ic_exit" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x10"
+            android:text="退出"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray" />
+
+    <LinearLayout
+        android:id="@+id/self_help"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/x10"
+        android:paddingTop="@dimen/x10">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x10"
+            android:src="@mipmap/ic_help" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x10"
+            android:text="帮助"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/darker_gray" />
 </LinearLayout>

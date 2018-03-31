@@ -21,10 +21,12 @@ import java.util.List;
 public class HouseAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private List<SignModel.Data> data;
-    public HouseAdapter(Context context, List<SignModel.Data> data){
+
+    public HouseAdapter(Context context, List<SignModel.Data> data) {
         this.mInflater = LayoutInflater.from(context);
         this.data = data;
     }
+
     @Override
     public int getCount() {
         return data.size();

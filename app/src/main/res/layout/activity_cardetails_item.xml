@@ -1,58 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp">
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/x10"
+    android:paddingTop="@dimen/x10">
 
     <TextView
         android:id="@+id/carNumber"
-        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/x10"
+        android:gravity="center"
         android:textColor="#000000"
-        android:gravity="center_vertical"
-        android:layout_marginLeft="20dp"
-        android:layout_width="150dp"
-        android:layout_height="match_parent" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/carState"
-        android:textSize="18sp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/x16"
+        android:layout_toLeftOf="@+id/datele"
+        android:gravity="center"
         android:textColor="#999999"
-        android:gravity="center_vertical"
-        android:layout_width="150dp"
-        android:layout_height="match_parent" />
-    <View
-        android:background="#f2f2f2"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_width="2px"
-        android:layout_height="match_parent"></View>
+        android:textSize="14sp" />
+
     <TextView
         android:id="@+id/datele"
-        android:textColor="#42C1FC"
-        android:text="删除"
-        android:textSize="18sp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:gravity="center_vertical"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
-
-    <View
-        android:background="#f2f2f2"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_width="2px"
-        android:layout_height="match_parent"></View>
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/x16"
+        android:gravity="center_vertical"
+        android:text="删除"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/lock"
-        android:layout_marginLeft="20dp"
-        android:textColor="#42C1FC"
-        android:textSize="18sp"
-        android:text="锁定和解锁"
-        android:gravity="center_vertical"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/x16"
+        android:gravity="center_vertical"
+        android:text="锁定和解锁"
+        android:textColor="#42C1FC"
+        android:textSize="14sp"
+        android:visibility="gone" />
+</RelativeLayout>

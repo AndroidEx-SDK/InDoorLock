@@ -17,14 +17,16 @@ public class AndroidexApplication extends Application {
     public void onCreate() {
         super.onCreate();
         init();
+
+       // MainApplication.getInstance().init(this);
     }
 
-    private void init(){
+    private void init() {
         c = getApplicationContext();
         MobSDK.init(c);
     }
 
-    public static Context getContext(){
+    public static Context getContext() {
         return c;
     }
 }

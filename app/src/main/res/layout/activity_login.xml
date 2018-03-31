@@ -1,90 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:background="#42C1FC"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="#42C1FC"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
 
-    <include
-        layout="@layout/activity_account_titlebar"></include>
+    <include layout="@layout/activity_account_titlebar" />
+
+    <EditText
+        android:id="@+id/sign_in_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x16"
+        android:layout_marginRight="@dimen/x16"
+        android:layout_marginTop="@dimen/x24"
+        android:drawableLeft="@mipmap/ic_phone"
+        android:drawablePadding="@dimen/x10" />
+
     <LinearLayout
-        android:layout_marginTop="80dp"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:layout_width="700dp"
-        android:layout_height="70dp">
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/ic_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x24"
+        android:orientation="vertical">
+
         <EditText
-            android:id="@+id/sign_in_phone"
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="bottom"
+            android:id="@+id/sign_in_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x16"
+            android:layout_marginRight="@dimen/x16"
+            android:drawableLeft="@mipmap/ic_password"
+            android:drawablePadding="@dimen/x10"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/sign_in_forget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="@dimen/x16"
+            android:text="忘记密码?"
+            android:textColor="#eeeeee" />
     </LinearLayout>
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="80dp"
-        android:layout_width="700dp"
-        android:layout_height="70dp">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_gravity="center_vertical"
-                android:src="@mipmap/ic_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <EditText
-                android:inputType="textPassword"
-                android:id="@+id/sign_in_password"
-                android:layout_marginLeft="20dp"
-                android:layout_gravity="bottom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <TextView
-            android:id="@+id/sign_in_forget"
-            android:text="忘记密码?"
-            android:textColor="#eeeeee"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
+        android:layout_marginLeft="@dimen/x16"
+        android:layout_marginRight="@dimen/x16"
+        android:layout_marginTop="@dimen/x32">
 
-    <RelativeLayout
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="80dp"
-        android:layout_width="700dp"
-        android:layout_height="70dp">
         <Button
             android:id="@+id/sign_in_button_login"
-            android:textSize="22sp"
-            android:textColor="#0396FF"
-            android:text="登 录"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@mipmap/ic_login_button"
-            android:layout_width="230dp"
-            android:layout_height="match_parent" />
+            android:text="登 录"
+            android:textColor="#0396FF"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/sign_in_button_register"
-            android:textSize="22sp"
-            android:textColor="#ffffff"
-            android:text="注 册"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/sign_in_button_login"
             android:background="@mipmap/ic_register_button"
-            android:layout_width="230dp"
-            android:layout_height="match_parent" />
+            android:text="注 册"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
     </RelativeLayout>
 
+    <View
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x32"
+        android:layout_marginRight="@dimen/x32"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1px"
+            android:layout_weight="1"
+            android:background="@color/cC8C8C8" />
+
+        <!--<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginRight="@dimen/x10"
+            android:text="@string/login_mode"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_small" /> -->
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1px"
+            android:layout_weight="1"
+            android:background="@color/cC8C8C8" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/x16"
+        android:layout_marginTop="@dimen/x16"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/iv_wx_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/iv_qq_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+    </LinearLayout>
 </LinearLayout>

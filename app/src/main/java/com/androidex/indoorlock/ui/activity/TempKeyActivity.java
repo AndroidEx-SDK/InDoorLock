@@ -43,7 +43,7 @@ public class TempKeyActivity extends BaseActivity {
         backLayout.setOnClickListener(this);
         title = findViewById(R.id.title);
         title.setText("访客通行");
-        menu  = findViewById(R.id.menu);
+        menu = findViewById(R.id.menu);
         menu.setText("新建");
         menu.setOnClickListener(this);
         listView = findViewById(R.id.listview);
@@ -51,12 +51,12 @@ public class TempKeyActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.back:
                 this.finish();
                 break;
             case R.id.menu:
-                startActivity(CreateTempKeyActivity.class,null);
+                startActivity(CreateTempKeyActivity.class, null);
                 break;
         }
     }
@@ -70,27 +70,27 @@ public class TempKeyActivity extends BaseActivity {
     protected void onStart() {
         super.onStart();
         showLoading("正在加载....");
-        Map<String,String> data = new HashMap<>();
-        data.put("arrayLength",0+"");
+        Map<String, String> data = new HashMap<>();
+        data.put("arrayLength", 0 + "");
         data.put("appKey", Utils.getKey());
-        data.put("token",signModel.token);
-        postEvent(EVENT_WHAT_TEMPKEY,data);
+        data.put("token", signModel.token);
+        postEvent(EVENT_WHAT_TEMPKEY, data);
     }
 
     @Override
     public void onEvent(Event event) {
-        switch (event.what){
+        switch (event.what) {
             case EVENT_WHAT_TEMPKEY_RESULT:
                 hideLoadingDialog();
                 TempKeyModel model = (TempKeyModel) event.msg;
-                if(model.code == 0){
-                    if(model.data.size()>0){
-                        listView.setAdapter(new TempKeyAdapter(this,model.data));
+                if (model.code == 0) {
+                    if (model.data.size() > 0) {
+                        listView.setAdapter(new TempKeyAdapter(this, model.data));
                     }
-                }else if(model.code == NETWORK_ERROR){
-                    showToast(false,"网络异常");
-                }else if(model.code == SERVER_ERROR){
-                    showToast(false,"服务器异常");
+                } else if (model.code == NETWORK_ERROR) {
+                    showToast(false, "网络异常");
+                } else if (model.code == SERVER_ERROR) {
+                    showToast(false, "服务器异常");
                 }
                 break;
         }

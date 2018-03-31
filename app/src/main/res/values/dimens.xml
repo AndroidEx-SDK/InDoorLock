@@ -6,4 +6,21 @@
     <dimen name="register_width">700dp</dimen>
     <dimen name="register_height">70dp</dimen>
     <dimen name="register_marginTop">30dp</dimen>
+    <dimen name="x2">2dp</dimen>
+    <dimen name="x5">5dp</dimen>
+    <dimen name="x1">1dp</dimen>
+    <dimen name="x8">8dp</dimen>
+    <dimen name="x16">16dp</dimen>
+    <dimen name="x10">10dp</dimen>
+    <dimen name="x64">64dp</dimen>
+    <dimen name="x40">40dp</dimen>
+    <dimen name="x35">35dp</dimen>
+    <dimen name="x24">24dp</dimen>
+    <dimen name="x3">3dp</dimen>
+    <dimen name="x120">120dp</dimen>
+    <dimen name="x28">28dp</dimen>
+    <dimen name="x32">32dp</dimen>
+    <dimen name="x200">200dp</dimen>
+    <dimen name="x12">12dp</dimen>
+    <dimen name="x30">30dp</dimen>
 </resources>

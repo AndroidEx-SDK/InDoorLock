@@ -48,7 +48,7 @@ public class AccessActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.back){
+        if (view.getId() == R.id.back) {
             this.finish();
         }
     }
@@ -60,22 +60,22 @@ public class AccessActivity extends BaseActivity {
 
     @Override
     public void onEvent(Event event) {
-        switch (event.what){
+        switch (event.what) {
             case EVENT_WHAT_RECEVICE_ACCESS_RESULT:
                 hideLoadingDialog();
                 AccessModel model = (AccessModel) event.msg;
-                if(model!=null){
-                    if(model.code == 0){
-                        if(model.data!=null && model.data.size()>0){
-                            listView.setAdapter(new AccessAdapter(this,model.data));
+                if (model != null) {
+                    if (model.code == 0) {
+                        if (model.data != null && model.data.size() > 0) {
+                            listView.setAdapter(new AccessAdapter(this, model.data));
                         }
-                    }else if(model.code == NETWORK_ERROR){
-                        showToast(false,"请检查网络");
-                    }else if(model.code ==SERVER_ERROR){
-                        showToast(false,"服务器异常");
+                    } else if (model.code == NETWORK_ERROR) {
+                        showToast(false, "请检查网络");
+                    } else if (model.code == SERVER_ERROR) {
+                        showToast(false, "服务器异常");
                     }
-                }else{
-                    showToast(false,"资源获取出错，请稍后再试");
+                } else {
+                    showToast(false, "资源获取出错，请稍后再试");
                 }
                 break;
         }
@@ -83,11 +83,11 @@ public class AccessActivity extends BaseActivity {
 
     @Override
     public void mainThread() {
-        Map<String,String> data = new HashMap<>();
-        data.put("arrayLength",0+"");
+        Map<String, String> data = new HashMap<>();
+        data.put("arrayLength", 0 + "");
         data.put("appKey", Utils.getKey());
-        data.put("token",signModel.token);
-        postEvent(EVENT_WHAT_RECEVICE_ACCESS,data);
+        data.put("token", signModel.token);
+        postEvent(EVENT_WHAT_RECEVICE_ACCESS, data);
         showLoading("正在获取开门记录...");
     }
 }

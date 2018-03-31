@@ -41,10 +41,10 @@ public class HomeActivity extends BaseActivity {
     private RelativeLayout aroundrLayout;
     private RelativeLayout selfLayout;
     private LinearLayout houseLayout;
-    private ImageView managerImage,aroundImage,selfImage;
+    private ImageView managerImage, aroundImage, selfImage;
     private TextView houseText;
     private FragmentManager fragmentManager;
-    private Fragment mFragment,aFragment,sFragment;
+    private Fragment mFragment, aFragment, sFragment;
     private ImageView rtcNotifyImage;
     private TextView rtcNotifyText;
 
@@ -76,7 +76,7 @@ public class HomeActivity extends BaseActivity {
         aroundrLayout.setOnClickListener(this);
         selfLayout.setOnClickListener(this);
         managerImage = findViewById(R.id.manager_icon);
-        aroundImage =findViewById(R.id.around_icon);
+        aroundImage = findViewById(R.id.around_icon);
         selfImage = findViewById(R.id.self_icon);
         houseLayout = findViewById(R.id.home_house_layout);
         houseLayout.setOnClickListener(this);
@@ -95,7 +95,7 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        if(houseAlert!=null){
+        if (houseAlert != null) {
             houseAlert.dismiss();
             houseAlert = null;
         }
@@ -104,7 +104,7 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.manager_layout:
                 showPage(1);
                 break;
@@ -116,8 +116,8 @@ public class HomeActivity extends BaseActivity {
                 break;
             case R.id.home_house_layout:
                 //切换房屋
-                if(houseAlert == null){
-                    houseAlert = new HouseAlert(this,R.style.Dialog);
+                if (houseAlert == null) {
+                    houseAlert = new HouseAlert(this, R.style.Dialog);
                 }
                 houseAlert.show();
                 break;
@@ -131,14 +131,14 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     protected void onTopAccount() {
-        postEvent(EVENT_WHAT_SIGN_OUT,2);
+        postEvent(EVENT_WHAT_SIGN_OUT, 2);
     }
 
     @Override
     public void onEvent(Event event) {
-        switch (event.what){
+        switch (event.what) {
             case EVENT_WHAT_HOUSE_CHANGE:
-                showToast(true,"切换成功");
+                showToast(true, "切换成功");
                 setHouseText();
                 break;
             case EVENT_WHAT_RTC_NOTIFY:
@@ -150,8 +150,8 @@ public class HomeActivity extends BaseActivity {
                 break;
             case EVENT_WHAT_SIGN_OUT_CALLBACK:
                 Bundle bundle = new Bundle();
-                bundle.putInt("mode",signoutmode);
-                startActivity(LoginActivity.class,bundle);
+                bundle.putInt("mode", signoutmode);
+                startActivity(LoginActivity.class, bundle);
                 this.finish();
                 break;
             case EVENT_WHAT_EXIT:
@@ -168,20 +168,20 @@ public class HomeActivity extends BaseActivity {
         postEvent(EVENT_WHAT_INITRTC);
     }
 
-    private void startRefreshAnimator(){
+    private void startRefreshAnimator() {
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.rotate);
         showL("开始执行动画...");
         refresh.startAnimation(animation);//开始动画
     }
 
-    private void stopRefreshAnimator(){
+    private void stopRefreshAnimator() {
         refresh.clearAnimation();
     }
 
-    private void showPage(int page){
+    private void showPage(int page) {
         FragmentTransaction ft = fragmentManager.beginTransaction();
         hideFragments(ft);
-        switch (page){
+        switch (page) {
             case 1:
                 if (mFragment != null)
                     ft.show(mFragment);
@@ -220,8 +220,8 @@ public class HomeActivity extends BaseActivity {
             ft.hide(sFragment);
     }
 
-    private void switchPageHead(int page){
-        switch (page){
+    private void switchPageHead(int page) {
+        switch (page) {
             case 1:
                 managerImage.setImageResource(R.mipmap.ic_manager_focus);
                 aroundImage.setImageResource(R.mipmap.ic_around);
@@ -240,11 +240,11 @@ public class HomeActivity extends BaseActivity {
         }
     }
 
-    private void setHouseText(){
+    private void setHouseText() {
         SignModel model = (SignModel) SharedPreTool.getObject(SharedPreTool.sign_model);
-        if(model!=null){
-            for(int i=0;i<model.data.size();i++){
-                if(model.data.get(i).rid == SharedPreTool.getIntValue(SharedPreTool.house_rid)){
+        if (model != null) {
+            for (int i = 0; i < model.data.size(); i++) {
+                if (model.data.get(i).rid == SharedPreTool.getIntValue(SharedPreTool.house_rid)) {
                     houseText.setText(model.data.get(i).unitName);
                     return;
                 }
@@ -254,37 +254,38 @@ public class HomeActivity extends BaseActivity {
     }
 
     private boolean isShowState = true;
-    private void setRtcNotify(int code){
+
+    private void setRtcNotify(int code) {
         notifyLayout.setVisibility(View.VISIBLE);
         rtcloginLayout.setVisibility(View.GONE);
         stopRefreshAnimator();
-        if(code == RTCTools.RTCListener.INIT_SUCCESS){
+        if (code == RTCTools.RTCListener.INIT_SUCCESS) {
             rtcNotifyImage.setImageResource(R.mipmap.ic_available);
             rtcNotifyText.setText("可视对讲上线成功");
-            if(isShowState){
+            if (isShowState) {
                 isShowState = false;
-                showToast(true,"可视对讲上线成功");
+                showToast(true, "可视对讲上线成功");
             }
-        }else if(code == RTCTools.RTCListener.INIT_NOSIGN){
+        } else if (code == RTCTools.RTCListener.INIT_NOSIGN) {
             isShowState = true;
             rtcNotifyImage.setImageResource(R.mipmap.ic_unavailable);
             rtcNotifyText.setText("可视对讲上线失败，请重新登录");
-            showToast(false,"可视对讲上线失败，请重新登录");
-        }else if(code == RTCTools.RTCListener.INIT_TIMEERROR){
+            showToast(false, "可视对讲上线失败，请重新登录");
+        } else if (code == RTCTools.RTCListener.INIT_TIMEERROR) {
             rtcNotifyImage.setImageResource(R.mipmap.ic_unavailable);
             rtcNotifyText.setText("系统时间错误，可视对讲无法使用");
             isShowState = true;
-            showToast(false,"系统时间错误，可视对讲无法使用");
-        }else if(code == RTCTools.RTCListener.INIT_NONETWORK){
+            showToast(false, "系统时间错误，可视对讲无法使用");
+        } else if (code == RTCTools.RTCListener.INIT_NONETWORK) {
             rtcNotifyImage.setImageResource(R.mipmap.ic_unavailable);
             rtcNotifyText.setText("无网络连接，可视对讲无法使用");
             isShowState = true;
-            showToast(false,"无网络连接，可视对讲无法使用");
-        }else if(code == RTCTools.RTCListener.INIT_RELOGINERROR){
+            showToast(false, "无网络连接，可视对讲无法使用");
+        } else if (code == RTCTools.RTCListener.INIT_RELOGINERROR) {
             rtcNotifyImage.setImageResource(R.mipmap.ic_unavailable);
             rtcNotifyText.setText("可视对讲注册失败，请手动重新登录");
             isShowState = true;
-            showToast(false,"可视对讲注册失败，请尝试手动登录");
+            showToast(false, "可视对讲注册失败，请尝试手动登录");
         }
     }
 }

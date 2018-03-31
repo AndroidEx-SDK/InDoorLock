@@ -24,6 +24,7 @@ public class BillActivity extends BaseActivity {
     private TextView details;
     private TextView money;
     private TextView payment;
+
     @Override
     public void initParms(Bundle parms) {
 
@@ -41,7 +42,8 @@ public class BillActivity extends BaseActivity {
         title = findViewById(R.id.title);
         title.setText("物业缴费");
         menu = findViewById(R.id.menu);
-        menu.setText("已支付账单");
+//        menu.setText("已支付账单");
+        menu.setText("账单");
         menu.setOnClickListener(this);
 
         count = findViewById(R.id.count);
@@ -54,7 +56,7 @@ public class BillActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.back:
                 this.finish();
                 break;

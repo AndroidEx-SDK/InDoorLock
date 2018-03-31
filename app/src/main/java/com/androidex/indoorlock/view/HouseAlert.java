@@ -24,7 +24,7 @@ import org.w3c.dom.Text;
  * Created by Administrator on 2018/3/1.
  */
 
-public class HouseAlert extends Dialog implements Constants{
+public class HouseAlert extends Dialog implements Constants {
     private Context mContext;
     private SignModel model;
 
@@ -53,19 +53,19 @@ public class HouseAlert extends Dialog implements Constants{
         errorText = findViewById(R.id.error);
         listView = findViewById(R.id.listview);
         model = (SignModel) SharedPreTool.getObject(SharedPreTool.sign_model);
-        if(model!=null && model.data!=null && model.data.size()>0){
+        if (model != null && model.data != null && model.data.size() > 0) {
             listView.setVisibility(View.VISIBLE);
             errorText.setVisibility(View.GONE);
-            listView.setAdapter(new HouseAlertAdapter(mContext,model.data));
+            listView.setAdapter(new HouseAlertAdapter(mContext, model.data));
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    SharedPreTool.saveIntValue(SharedPreTool.house_rid,model.data.get(i).rid);
-                    EventBus.getDefault().post(new Event(EVENT_WHAT_HOUSE_CHANGE,null));
+                    SharedPreTool.saveIntValue(SharedPreTool.house_rid, model.data.get(i).rid);
+                    EventBus.getDefault().post(new Event(EVENT_WHAT_HOUSE_CHANGE, null));
                     HouseAlert.this.dismiss();
                 }
             });
-        }else{
+        } else {
             listView.setVisibility(View.GONE);
             errorText.setVisibility(View.VISIBLE);
         }
