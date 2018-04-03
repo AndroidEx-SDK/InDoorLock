@@ -53,7 +53,7 @@ public class TroubleActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.back:
                 this.finish();
                 break;
@@ -70,22 +70,22 @@ public class TroubleActivity extends BaseActivity {
 
     @Override
     public void onEvent(Event event) {
-        if(event.what == EVENT_WHAT_TROUBLE_RESULT){
+        if (event.what == EVENT_WHAT_TROUBLE_RESULT) {
             hideLoadingDialog();
             final TroubleListModel model = (TroubleListModel) event.msg;
-            if(model.code == 0){
-                if(model.data!=null && model.data.size()>0){
-                    listView.setAdapter(new TroubleAdapter(this,model.data));
+            if (model.code == 0) {
+                if (model.data != null && model.data.size() > 0) {
+                    listView.setAdapter(new TroubleAdapter(this, model.data));
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            Intent intent = new Intent(TroubleActivity.this,TroubleDetailsActivity.class);
-                            intent.putExtra("trouble",model.data.get(i));
+                            Intent intent = new Intent(TroubleActivity.this, TroubleDetailsActivity.class);
+                            intent.putExtra("trouble", model.data.get(i));
                             startActivity(intent);
                         }
                     });
                 }
-            }else {
+            } else {
 
             }
         }
@@ -96,12 +96,12 @@ public class TroubleActivity extends BaseActivity {
         getTroubleList();
     }
 
-    private void getTroubleList(){
+    private void getTroubleList() {
         showLoading("正在加载数据...");
-        Map<String,String> data = new HashMap<>();
-        data.put("arrayLength",0+"");
+        Map<String, String> data = new HashMap<>();
+        data.put("arrayLength", 0 + "");
         data.put("appKey", Utils.getKey());
-        data.put("token",signModel.token);
-        postEvent(EVENT_WHAT_TROUBLE,data);
+        data.put("token", signModel.token);
+        postEvent(EVENT_WHAT_TROUBLE, data);
     }
 }

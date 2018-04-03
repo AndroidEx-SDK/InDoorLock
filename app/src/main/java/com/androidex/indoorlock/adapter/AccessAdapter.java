@@ -28,11 +28,13 @@ public class AccessAdapter extends BaseAdapter {
     private Context context;
     private LayoutInflater mInflater;
     private List<AccessModel.Data> data;
-    public AccessAdapter(Context context,List<AccessModel.Data> data){
+
+    public AccessAdapter(Context context, List<AccessModel.Data> data) {
         this.context = context;
         this.mInflater = LayoutInflater.from(context);
         this.data = data;
     }
+
     @Override
     public int getCount() {
         return data.size();
@@ -63,7 +65,7 @@ public class AccessAdapter extends BaseAdapter {
         }
         holder.tempKey.setText(data.get(i).lockName);
         holder.time.setText(Utils.UTCStringtODefaultString(data.get(i).creDate));
-        String url = UrlTool.BASE_HEAD+data.get(i).imageUrl;
+        String url = UrlTool.BASE_HEAD + data.get(i).imageUrl;
         Glide.with(context).load(url).into(new SimpleTarget<GlideDrawable>() {
             @Override
             public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
@@ -77,6 +79,7 @@ public class AccessAdapter extends BaseAdapter {
         });
         return convertView;
     }
+
     private class ViewHolder {
         ImageView head;
         TextView tempKey;

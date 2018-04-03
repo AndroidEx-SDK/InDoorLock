@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    >
+    <include
+        layout="@layout/activity_titlebar"></include>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="请选择您的房屋"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:textColor="#999999"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <RelativeLayout
+                android:id="@+id/layout1"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+                <TextView
+                    android:text="城市"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <ImageView
+                    android:id="@+id/next1"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/ic_next"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/content1"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/next1"
+                    android:gravity="center_vertical"
+                    android:textSize="18sp"
+                    android:textColor="#999999"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/layout2"
+                android:layout_marginTop="1px"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+                <TextView
+                    android:text="小区"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <ImageView
+                    android:id="@+id/next2"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/ic_next"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/content2"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/next2"
+                    android:gravity="center_vertical"
+                    android:textSize="18sp"
+                    android:textColor="#999999"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout3"
+                android:layout_marginTop="1px"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+                <TextView
+                    android:text="楼栋"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <ImageView
+                    android:id="@+id/next3"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/ic_next"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/content3"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/next3"
+                    android:gravity="center_vertical"
+                    android:textSize="18sp"
+                    android:textColor="#999999"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout4"
+                android:layout_marginTop="1px"
+                android:background="#ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+                <TextView
+                    android:text="单元"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <ImageView
+                    android:id="@+id/next4"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/ic_next"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/content4"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/next4"
+                    android:gravity="center_vertical"
+                    android:textSize="18sp"
+                    android:textColor="#999999"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+            <TextView
+                android:text="申请信息"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:textColor="#999999"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <LinearLayout
+                android:background="#ffffff"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+                <TextView
+                    android:text="姓名"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="20dp"
+                    />
+                <TextView
+                    android:id="@+id/name"
+                    android:textSize="18sp"
+                    android:textColor="#999999"
+                    android:gravity="center_vertical"
+                    android:background="#ffffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:background="#ffffff"
+                android:layout_marginTop="1px"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+                <TextView
+                    android:text="电话"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="20dp"
+                    />
+                <TextView
+                    android:id="@+id/phone"
+                    android:textSize="18sp"
+                    android:textColor="#999999"
+                    android:background="#ffffffff"
+                    android:gravity="center_vertical"
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:background="#ffffff"
+                android:layout_marginTop="1px"
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+                <TextView
+                    android:text="关系"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="20dp"
+                    />
+                <TextView
+                    android:id="@+id/type"
+                    android:hint="业主"
+                    android:textColor="#999999"
+                    android:layout_marginLeft="119dp"
+                    android:textSize="18sp"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                <ImageView
+                    android:src="@mipmap/ic_next"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    />
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/message"
+                android:text="您申请成为该房屋的业主，需要管理处审核"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:textColor="#999999"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <RelativeLayout
+                android:id="@+id/owner_layout"
+                android:visibility="gone"
+                android:background="#ffffff"
+                android:layout_marginTop="1px"
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+                <TextView
+                    android:text="业主电话"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="20dp"
+                    />
+                <TextView
+                    android:id="@+id/owner_phone"
+                    android:textColor="#999999"
+                    android:layout_marginLeft="119dp"
+                    android:textSize="18sp"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                <ImageView
+                    android:src="@mipmap/ic_next"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/code_layout"
+                android:visibility="gone"
+                android:background="#ffffff"
+                android:orientation="horizontal"
+                android:layout_marginTop="1px"
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+                <TextView
+                    android:text="验证码"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="20dp"
+                    />
+                <EditText
+                    android:id="@+id/code"
+                    android:hint="请输入验证码"
+                    android:layout_width="200dp"
+                    android:background="#ffffffff"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/getcode"
+                    android:text="获取验证码"
+                    android:textColor="#42C1FC"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/cancel"
+                android:text="取消"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:background="@drawable/cancel_backgaround"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="70dp" />
+
+            <Button
+                android:id="@+id/confirm"
+                android:text="确认"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:background="@drawable/confirm_background"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="70dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"></View>
+        </LinearLayout>
+
+
+    </ScrollView>
+</LinearLayout>

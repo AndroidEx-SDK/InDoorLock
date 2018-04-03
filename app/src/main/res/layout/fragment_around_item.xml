@@ -1,41 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="170dp">
+    android:layout_height="match_parent"
+    android:background="#F2F2F2">
+
     <ImageView
         android:id="@+id/image"
-        android:src="@mipmap/ic_error"
-        android:layout_width="250dp"
+        android:layout_width="@dimen/x118"
+        android:layout_height="@dimen/x88"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:scaleType="fitXY"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_gravity="center_vertical"
-        android:layout_height="150dp" />
-    <LinearLayout
-        android:orientation="vertical"
+        android:src="@mipmap/ic_around_shop1" />
+
+    <TextView
+        android:id="@+id/name"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/name"
-            android:layout_weight="1"
-            android:textSize="18sp"
-            android:gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp" />
-        <TextView
-            android:id="@+id/phone"
-            android:layout_weight="1"
-            android:textSize="18sp"
-            android:gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp" />
-        <TextView
-            android:id="@+id/address"
-            android:layout_weight="1"
-            android:textSize="18sp"
-            android:gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp" />
-    </LinearLayout>
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/image"
+        android:layout_marginLeft="@dimen/x8"
+        android:layout_marginTop="@dimen/x16"
+        android:layout_toRightOf="@+id/image"
+        android:text="安卓工控商贸"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/name"
+        android:layout_marginTop="@dimen/x5"
+        android:text="电话：15919749045"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_alignParentBottom="true"
+        android:text="地址：龙景工业园"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
+</RelativeLayout>

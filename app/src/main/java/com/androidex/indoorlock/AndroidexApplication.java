@@ -18,7 +18,7 @@ public class AndroidexApplication extends Application {
         super.onCreate();
         init();
 
-       // MainApplication.getInstance().init(this);
+//        MainApplication.getInstance().init(this);
     }
 
     private void init() {

@@ -1,200 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f2f2f2"
-    >
+    android:orientation="vertical">
 
-    <include
-        layout="@layout/activity_titlebar"></include>
+    <include layout="@layout/activity_titlebar" />
 
     <LinearLayout
-        android:background="#ffffff"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/x12"
+        android:paddingTop="@dimen/x12">
+
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x16"
+            android:gravity="center"
             android:text="姓名"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
             android:textColor="#999999"
-            android:textSize="20sp"
-            android:layout_marginLeft="20dp"
-            />
+            android:textSize="16sp" />
+
         <EditText
             android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/white"
             android:hint="请输入姓名"
-            android:background="#ffffffff"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:lines="1"
+            android:paddingLeft="@dimen/x16"
+            android:paddingRight="@dimen/x8"
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:background="#ffffff"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_marginTop="1px"
-        >
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/x12"
+        android:paddingTop="@dimen/x12">
+
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x16"
+            android:gravity="center"
             android:text="电话"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
             android:textColor="#999999"
-            android:textSize="20sp"
-            android:layout_marginLeft="20dp"
-            />
+            android:textSize="16sp" />
+
         <EditText
             android:id="@+id/mobile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/white"
             android:hint="请输入电话号码"
             android:inputType="number"
-            android:background="#ffffffff"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:lines="1"
+            android:paddingLeft="@dimen/x16"
+            android:paddingRight="@dimen/x8"
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:background="#ffffff"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_marginTop="1px"
-        >
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/x12"
+        android:paddingTop="@dimen/x12">
+
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x16"
+            android:gravity="center"
             android:text="限制"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
             android:textColor="#999999"
-            android:textSize="20sp"
-            android:layout_marginLeft="20dp"
-            />
+            android:textSize="16sp" />
+
         <RadioGroup
             android:id="@+id/limit_rg"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x16"
+            android:layout_weight="1"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:orientation="horizontal">
+
             <RadioButton
                 android:id="@+id/rb_count"
-                android:text="次数"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:checked="true"
-                android:layout_width="80dp"
-                android:layout_height="match_parent" />
+                android:text="次数" />
+
             <RadioButton
                 android:id="@+id/rb_time"
-                android:text="时间"
-                android:layout_marginLeft="50dp"
-                android:layout_width="80dp"
-                android:layout_height="match_parent" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x24"
+                android:text="时间" />
         </RadioGroup>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/count_layout"
-        android:background="#ffffff"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_marginTop="1px"
-        >
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/x12"
+        android:paddingTop="@dimen/x12">
+
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x16"
+            android:gravity="center"
             android:text="次数"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
             android:textColor="#999999"
-            android:textSize="20sp"
-            android:layout_marginLeft="20dp"
-            />
+            android:textSize="16sp" />
+
         <EditText
             android:id="@+id/count"
-            android:inputType="number"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/white"
             android:hint="请输入限制次数"
-            android:background="#ffffffff"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:inputType="number"
+            android:lines="1"
+            android:paddingLeft="@dimen/x16"
+            android:paddingRight="@dimen/x8"
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/time_layout"
-        android:background="#ffffff"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_marginTop="1px"
-        >
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/x12"
+        android:paddingTop="@dimen/x12">
+
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x16"
+            android:gravity="center"
             android:text="时间"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
             android:textColor="#999999"
-            android:textSize="20sp"
-            android:layout_marginLeft="20dp"
-            />
+            android:textSize="16sp" />
+
         <TextView
             android:id="@+id/time"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:hint="请设置时间（7天内有效）"
-            android:textSize="18sp"
-            android:gravity="center_vertical"
-            android:background="#ffffffff"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:paddingLeft="@dimen/x16"
+            android:paddingRight="@dimen/x8"
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:background="#ffffff"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_marginTop="1px"
-        >
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/x12"
+        android:paddingTop="@dimen/x12">
+
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x16"
+            android:gravity="center"
             android:text="小区"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
             android:textColor="#999999"
-            android:textSize="20sp"
-            android:layout_marginLeft="20dp"
-            />
+            android:textSize="16sp" />
+
         <TextView
             android:id="@+id/lock"
-            android:hint="请设置小区"
-            android:textSize="18sp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center_vertical"
-            android:background="#ffffffff"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:paddingLeft="@dimen/x16"
+            android:paddingRight="@dimen/x8"
+            android:text="请设置小区"
+            android:textSize="14sp" />
     </LinearLayout>
+
     <Button
         android:id="@+id/cancel"
-        android:text="取消"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:background="@drawable/cancel_backgaround"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="70dp" />
+        android:layout_height="@dimen/x40"
+        android:layout_marginLeft="@dimen/x24"
+        android:layout_marginRight="@dimen/x24"
+        android:layout_marginTop="@dimen/x40"
+        android:background="@drawable/cancel_backgaround"
+        android:text="取消"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/confirm"
-        android:text="确认"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:background="@drawable/confirm_background"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="70dp" />
+        android:layout_height="@dimen/x40"
+        android:layout_marginLeft="@dimen/x24"
+        android:layout_marginRight="@dimen/x24"
+        android:layout_marginTop="@dimen/x32"
+        android:background="@drawable/confirm_background"
+        android:text="确认"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 
 </LinearLayout>

@@ -218,24 +218,25 @@ public class CreateTempKeyActivity extends BaseActivity {
 
 
     private void showDatePickerDialog() {
-//        if (datePickerDialog == null) {
-//            Calendar c = Calendar.getInstance();
-//            datePickerDialog = new DatePickerDialog(this, 3, new DatePickerDialog.OnDateSetListener() {
-//                @Override
-//                public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-//                    //2018-03-07
-//                    if (calendar == null) {
-//                        calendar = Calendar.getInstance();
-//                    }
-//                    calendar.set(i, i1, i2, 23, 59, 59);
-//                    String strTime = simpleDateFormat.format(calendar.getTime());
-//                    time.setText(strTime);
-//                }
-//            }, c.get(Calendar.YEAR)
-//                    , c.get(Calendar.MONTH)
-//                    , c.get(Calendar.DAY_OF_MONTH));
-//        }
-//        datePickerDialog.show();
+        if (datePickerDialog == null) {
+            Calendar c = Calendar.getInstance();
+//            datePickerDialog = new DatePickerDialog(this, DatePickerDialog.THEME_HOLO_LIGHT, new DatePickerDialog.OnDateSetListener() {
+            datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                    //2018-03-07
+                    if (calendar == null) {
+                        calendar = Calendar.getInstance();
+                    }
+                    calendar.set(i, i1, i2, 23, 59, 59);
+                    String strTime = simpleDateFormat.format(calendar.getTime());
+                    time.setText(strTime);
+                }
+            }, c.get(Calendar.YEAR)
+                    , c.get(Calendar.MONTH)
+                    , c.get(Calendar.DAY_OF_MONTH));
+        }
+        datePickerDialog.show();
     }
 
     private void showHouseAlert() {

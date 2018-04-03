@@ -1,60 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:background="#ffffff"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp">
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
 
     <ImageView
         android:id="@+id/image"
-        android:src="@mipmap/ic_error"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_width="@dimen/x118"
+        android:layout_height="@dimen/x88"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_gravity="center_vertical"
-        android:layout_width="300dp"
-        android:layout_height="170dp" />
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/name"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="0dp" />
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_error" />
 
-        <TextView
-            android:id="@+id/title"
-            android:textSize="16sp"
-            android:textColor="#999999"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="0dp" />
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/image"
+        android:layout_marginLeft="@dimen/x8"
+        android:layout_marginTop="@dimen/x10"
+        android:layout_toRightOf="@+id/image"
+        android:text="安卓工控商贸"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp">
-            <TextView
-                android:id="@+id/g"
-                android:textSize="16sp"
-                android:textColor="#ff0000"
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/name"
+        android:layout_marginTop="@dimen/x5"
+        android:text="电话：15919749045"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/og"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:layout_marginLeft="100dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-    </LinearLayout>
+    <TextView
+        android:id="@+id/g"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_alignParentBottom="true"
+        android:text="地址：龙景工业园"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="14sp" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/og"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/x16"
+        android:layout_toRightOf="@+id/g"
+        android:text="地址：龙景工业园"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
+</RelativeLayout>

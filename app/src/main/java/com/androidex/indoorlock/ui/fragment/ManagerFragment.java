@@ -17,6 +17,7 @@ import com.androidex.indoorlock.ui.activity.HouseActivity;
 import com.androidex.indoorlock.ui.activity.TempKeyActivity;
 import com.androidex.indoorlock.ui.activity.TroubleActivity;
 import com.androidex.indoorlock.utils.SharedPreTool;
+import com.pureman.dysmart.HomeActivity;
 //import com.pureman.dysmart.HomeActivity;
 
 /**
@@ -78,7 +79,7 @@ public class ManagerFragment extends BaseFragment {
                     case 11: //家庭电话
                         break;
                     case 12: //智能控制
-//                        startActivity(HomeActivity.class, null);
+                        startActivity(HomeActivity.class, null);
                         break;
                 }
             }

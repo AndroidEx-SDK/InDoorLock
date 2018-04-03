@@ -62,13 +62,14 @@ public class TroubleDetailsActivity extends BaseActivity {
         content.setText(trouble.remark);
 
         imageLayout = findViewById(R.id.imageLayout);
-        ArrayList<String> images = JSON.parseObject(trouble.images, new TypeReference<ArrayList<String>>() {});
+        ArrayList<String> images = JSON.parseObject(trouble.images, new TypeReference<ArrayList<String>>() {
+        });
         appendImageLayout(images);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.back:
                 this.finish();
                 break;
@@ -77,13 +78,13 @@ public class TroubleDetailsActivity extends BaseActivity {
 
     private void appendImageLayout(List<String> data) {
         for (int i = 0; i < data.size(); i++) {
-            showL("地址："+data.get(i));
+            showL("地址：" + data.get(i));
             final ImageView imageView = new ImageView(this);
-            int left, top, right, bottom;
-            left = top = right = bottom = 64;
+//            int left, top, right, bottom;
+//            left = top = right = bottom = 64;
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.setMargins(left, top, right, bottom);
+            params.setMargins(0, 16, 0, 0);
             imageView.setLayoutParams(params);
             imageLayout.addView(imageView);
             Glide.with(this).load(data.get(i)).placeholder(R.mipmap.ic_default).error(R.mipmap.ic_default).into(new SimpleTarget<GlideDrawable>() {

@@ -50,9 +50,9 @@
         android:layout_marginLeft="@dimen/x24"
         android:layout_marginRight="@dimen/x24"
         android:layout_marginTop="@dimen/x32"
-        android:background="@mipmap/ic_update_e"
+        android:background="@drawable/confirm_background"
         android:text="确认"
-        android:textColor="#ffffff"
+        android:textColor="@android:color/white"
         android:textSize="16sp" />
 
 </LinearLayout>

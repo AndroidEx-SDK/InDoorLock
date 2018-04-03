@@ -27,6 +27,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.pureman.dysmart.util.DeviceUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -51,14 +52,14 @@ public abstract class BaseActivity extends AppCompatActivity implements Constant
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //横屏、竖屏
-        //setRequestedOrientation(DeviceUtil.isPad(this) ? ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE : ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//横屏
+        setRequestedOrientation(DeviceUtil.isPad(this) ? ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE : ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//横屏
 
         signModel = (SignModel) SharedPreTool.getObject(SharedPreTool.sign_model);
         initParms(getIntent().getExtras());
         getSupportActionBar().hide();
-        if(this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }
+//        if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//        }
         v = LayoutInflater.from(this).inflate(bindView(), null);
         setContentView(v);
         initView(v);
@@ -175,7 +176,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Constant
         });
     }
 
-    protected void loadUrlImage(String url,final ImageView image){
+    protected void loadUrlImage(String url, final ImageView image) {
         Glide.with(this).load(url).placeholder(R.mipmap.ic_error).error(R.mipmap.ic_error).into(new SimpleTarget<GlideDrawable>() {
             @Override
             public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
@@ -184,7 +185,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Constant
         });
     }
 
-    protected void loadUrlImage(int rid,final ImageView image){
+    protected void loadUrlImage(int rid, final ImageView image) {
         Glide.with(this).load(rid).placeholder(R.mipmap.ic_error).error(R.mipmap.ic_error).into(new SimpleTarget<GlideDrawable>() {
             @Override
             public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {

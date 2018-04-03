@@ -66,7 +66,8 @@ public class AdviceDetailsActivity extends BaseActivity {
         content = findViewById(R.id.content);
         content.setText(advice.remark);
         imageLayout = findViewById(R.id.imageLayout);
-        ArrayList<String> images = JSON.parseObject(advice.images, new TypeReference<ArrayList<String>>() {});
+        ArrayList<String> images = JSON.parseObject(advice.images, new TypeReference<ArrayList<String>>() {
+        });
         addImage(images);
 //        try {
 //            JSONArray jsonArray = new JSONArray(advice.images);
@@ -87,11 +88,11 @@ public class AdviceDetailsActivity extends BaseActivity {
     private void addImage(List<String> data) {
         for (int i = 0; i < data.size(); i++) {
             final ImageView imageView = new ImageView(this);
-            int left, top, right, bottom;
-            left = top = right = bottom = 64;
+//            int left, top, right, bottom;
+//            left = top = right = bottom = 64;
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.setMargins(left, top, right, bottom);
+            params.setMargins(0, 16, 0, 0);
             imageView.setLayoutParams(params);
             imageLayout.addView(imageView);
             Glide.with(this).load(data.get(i)).placeholder(R.mipmap.ic_default).error(R.mipmap.ic_default).into(new SimpleTarget<GlideDrawable>() {
